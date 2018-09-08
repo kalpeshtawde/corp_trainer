@@ -2,6 +2,9 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
+    # /trainer/
     url(r'^$', views.index, name='index'),
-    url(r'^name$', views.name, name='name')
+
+    # /trainer/123/
+    url(r'^(?P<profile_id>\d+)/$', views.profile_detail, name='profile_detail')
 ]

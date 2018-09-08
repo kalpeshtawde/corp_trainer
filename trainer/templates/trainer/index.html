@@ -1,0 +1,9 @@
+<ul>
+    {% for profile in all_profiles %}
+    <li>
+        <a href="/trainer/{{profile.id }}/">
+            {{profile.first_name}} {{profile.last_name}}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
