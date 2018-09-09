@@ -1,0 +1,10 @@
+<img src="{{profile.photo}}">
+
+<h1>{{profile}}</h1>
+<ul>
+    {% for skill in profile.skill_set.all %}
+        <li>
+            {{skill.title}} - {{skill.hours}}
+        </li>
+    {% endfor %}
+</ul>

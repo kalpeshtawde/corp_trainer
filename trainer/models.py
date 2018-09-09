@@ -6,6 +6,7 @@ class Profile(models.Model):
     last_name = models.CharField(max_length=100)
     country = models.CharField(max_length=100)
     photo = models.CharField(max_length=1000)
+    is_favourite = models.BooleanField(default=False)
 
     # For Profile.objects.all() call it will return first name and last name
     def __str__(self):
@@ -14,8 +15,8 @@ class Profile(models.Model):
 
 class Skill(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    skill_title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
     hours = models.IntegerField()
 
     def __str__(self):
-        return self.skill_title + ' ' + self.hours
+        return self.title

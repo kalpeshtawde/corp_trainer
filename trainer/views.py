@@ -1,16 +1,20 @@
-from django.http import HttpResponse
-from django.template import loader
-from .models import Profile
+from django.shortcuts import render, get_object_or_404
+from .models import Profile, Skill
 
 
 def index(request):
     all_profiles = Profile.objects.all()
-    template = loader.get_template('trainer/index.html')
-    context = {
-        'all_profiles': all_profiles,
-    }
-    return HttpResponse(template.render(context, request))
+    context = {'all_profiles': all_profiles}
+    return render(request, 'trainer/index.html', context)
 
-def profile_detail(request, profile_id):
-    return HttpResponse("<H2>Details for Profile id: {0}</H2>".format(
-        profile_id))
+def detail(request, profile_id):
+    profile = get_object_or_404(Profile, pk=profile_id)
+    return render(request, 'trainer/detail.html', {'profile': profile})
+
+def favourite(request):
+    all_profiles = Profile.objects.all()
+    profile = get_object_or_404(all_profiles, pk=request.POST['profile'])
+    profile.is_favourite = True
+    profile.save()
+    context = {'all_profiles': all_profiles}
+    return render(request, 'trainer/index.html', context)
