@@ -1,20 +1,20 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Profile, Skill
+from django.views import generic
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .models import Profile
 
 
-def index(request):
-    all_profiles = Profile.objects.all()
-    context = {'all_profiles': all_profiles}
-    return render(request, 'trainer/index.html', context)
+class IndexView(generic.ListView):
+    template_name = 'trainer/index.html'
 
-def detail(request, profile_id):
-    profile = get_object_or_404(Profile, pk=profile_id)
-    return render(request, 'trainer/detail.html', {'profile': profile})
+    def get_queryset(self):
+        return Profile.objects.all()
 
-def favourite(request):
-    all_profiles = Profile.objects.all()
-    profile = get_object_or_404(all_profiles, pk=request.POST['profile'])
-    profile.is_favourite = True
-    profile.save()
-    context = {'all_profiles': all_profiles}
-    return render(request, 'trainer/index.html', context)
+
+class DetailView(generic.DetailView):
+    model = Profile
+    template_name = 'trainer/detail.html'
+
+
+class ProfileCreate(CreateView):
+    model = Profile
+    fields = ['first_name', 'last_name', 'country', 'photo', 'rating']

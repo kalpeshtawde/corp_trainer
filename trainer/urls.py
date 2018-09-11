@@ -5,11 +5,12 @@ app_name = 'trainer'
 
 urlpatterns = [
     # /trainer/
-    url(r'^$', views.index, name='index'),
-
-    # /trainer/favourite/
-    url(r'^favourite/$', views.favourite, name='favourite'),
+    url(r'^$', views.IndexView.as_view(), name='index'),
 
     # /trainer/123/
-    url(r'^(?P<profile_id>\d+)/$', views.detail, name='detail')
+    url(r'^(?P<pk>\d+)/$', views.DetailView.as_view(), name='detail'),
+
+    # /trainer/trainer/add/
+    url(r'^trainer/add/$', views.ProfileCreate.as_view(), name='profile-add')
 ]
+
