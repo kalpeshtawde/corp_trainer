@@ -1,0 +1,36 @@
+{% if error_message %}
+    <p><strong>error_message</strong></p>
+{% endif %}
+
+<form action="{% url 'trainer:favourite' %}" method="post">
+    {% csrf_token %}
+    {% if all_profiles %}
+        <ul>
+            {% for profile in all_profiles %}
+            <li>
+                <input type="radio" id="profile{{forloop.counter}}" name="profile" value="{{profile.id}}">
+                <a href="{% url 'trainer:detail' profile.id %}">
+                    {{profile.first_name}} {{profile.last_name}}
+                </a>
+                {% if profile.is_favourite %}
+                    <img src="https://i.imgur.com/b9b13Rd.png">
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3>You don't have any profile</h3>
+    {% endif %}
+    <input type="submit" value="Favourite">
+</form>
+
+
+
+
+
+
+
+
+
+
+
