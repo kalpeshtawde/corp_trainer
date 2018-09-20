@@ -1,0 +1,42 @@
+{% load static %}
+
+<nav class="navbar navbar-default header-section navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="navbar-brand logo-cntnr"><img
+              src="{% static 'trainer/img/logo.png' %}"
+              class="img-responsive"></div>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right navbar-menu ">
+        <li>
+			<div class="form-group">
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="text" name="" placeholder="Search" class="form-control searchbox">
+                    <span class="search-btn"><i class="icon-search"></i></span>
+                </form>
+			</div>
+        </li>
+        <li><a href="#"><span class="icon-notifications"><div class="badge">5</div></span></a></li>
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        	<div class="user-pic"
+                 style="background: url('/static/trainer/img/user.jpg')
+          center no-repeat;"></div>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Setting</a></li>
+          <li><a href="#">Logout</a></li>
+        </ul>
+      	</li>
+      </ul>
+    </div>
+  </div>
+</nav>

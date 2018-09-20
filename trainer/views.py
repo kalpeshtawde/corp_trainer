@@ -15,6 +15,11 @@ class DetailView(generic.DetailView):
     template_name = 'trainer/detail.html'
 
 
+class DetailView(generic.TemplateView):
+    template_name = 'trainer/index.html'
+
+    def get(self, request):
+
 class ProfileCreate(CreateView):
     model = Profile
     fields = ['first_name', 'last_name', 'country', 'photo', 'rating']

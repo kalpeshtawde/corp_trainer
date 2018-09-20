@@ -1,12 +1,16 @@
-<ul>
-    {% for profile in object_list %}
-        <li>
-            <a href="{% url 'trainer:detail' profile.id %}">
-                {{profile.first_name}} {{profile.last_name}}
-            </a>
-        </li>
-    {% endfor %}
-</ul>
+{% extends 'trainer/base.html' %}
+
+{% block body %}
+    <ul>
+        {% for profile in object_list %}
+            <li>
+                <a href="{% url 'trainer:detail' profile.id %}">
+                    {{profile.first_name}} {{profile.last_name}}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
 
 
 
