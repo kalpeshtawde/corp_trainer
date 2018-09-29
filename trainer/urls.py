@@ -7,8 +7,8 @@ urlpatterns = [
     # /trainer/
     url(r'^$', views.IndexView.as_view(), name='index'),
 
-    # /trainer/search/
-    url(r'^search/$', views.SearchView.as_view(), name='search'),
+    # /trainer/listing/
+    url(r'^listing/$', views.ListingView.as_view(), name='listing'),
 
     # /trainer/123/
     url(r'^(?P<pk>\d+)/$', views.DetailView.as_view(), name='detail'),

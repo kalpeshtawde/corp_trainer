@@ -16,7 +16,7 @@
       <ul class="nav navbar-nav navbar-right navbar-menu ">
         <li>
 			<div class="form-group">
-                <form method="post">
+                <form method="get" role="search" action="{% url 'trainer:index' %}">
                     <input type="text" name="" placeholder="Search" class="form-control searchbox">
                     <span class="search-btn"><i class="icon-search"></i></span>
                 </form>
