@@ -1,5 +1,5 @@
 from django.views import generic
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Profile
 
@@ -7,6 +7,10 @@ from trainer.forms import SearchForm
 
 
 class IndexView(generic.ListView):
+    template_name = 'trainer/index.html'
+
+
+class ListingView(generic.ListView):
     template_name = 'trainer/user_listing.html'
 
     def get_queryset(self):
@@ -19,14 +23,17 @@ class DetailView(generic.DetailView):
 
 
 class SearchView(generic.TemplateView):
-    template_name = 'trainer/index.html'
+    template_name = 'trainer/navbar.html'
+
+    def get_queryset(self):
+        return Profile.objects.all()
 
     def get(self, request):
         form = SearchForm()
         return render(request, self.template_name, {'form': form})
 
     def post(self, request):
-        form = SearchForm(request.POST)
+        form = SearchForm(request.POST, auto_id=False)
 
         if form.is_valid():
             text = form.cleaned_data['post']
