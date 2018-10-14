@@ -13,6 +13,18 @@ body{
   height: 100%;
   background-color: #f5f5f5;
 }
+body.sign-up-body{
+  height: auto;
+}
+.navbar-right li.login-li {
+    line-height: 64px;
+    padding-left: 15px;
+    color: #fff;
+}
+.navbar-right li.login-li .linked a{
+  color: #023436 !important;
+  font-weight: 600;
+}
 
 /*---------------------------Header CSS------------------------------*/
 .header-section {
@@ -85,7 +97,7 @@ span.search-btn > i{
 .left-panel{
     padding-top: 40px;
     padding-left: 24px;
-    padding-right: 24px;
+    padding-right: 24px;  
 }
 .sticky{
     position: sticky;
@@ -171,13 +183,19 @@ span.search-btn > i{
 .heading-text h5{
     color: #02715b;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 16px;  
 }
 button.btn-message{
   background-color: #fe5e39;
     color: #fff;
     border-radius: 0;
     padding: 9px 14px;
+    transition: 0.4s;
+}
+button.btn-message:hover, button.btn-message:focus, button.btn-message:active{
+  color: #fff;
+  background-color: rgb(254, 94, 57);
+  box-shadow: 0px 0px 9.5px 0.5px rgba(0, 0, 0, 0.1);
 }
 ul.flat-tabs{
   border-bottom: 2px solid #e0e0e0;
@@ -204,7 +222,7 @@ ul.flat-tabs > li.active > a{
     background: transparent !important;
     border: none !important;
     color: #023436 !important;
-}
+} 
 .info-sections{
   padding: 34px 38px 0;
 }
@@ -447,7 +465,7 @@ table.table-timeline caption{
 .search-result-header h4{
   color: #023436;
   display: inline-block;
-  margin: 0;
+  margin: 0; 
   margin-bottom: 8px;
 }
 .search-result-header strong{
@@ -527,10 +545,73 @@ ul.corp-pagination li a{
 ul.corp-pagination>li:first-child>a, ul.corp-pagination>li:first-child>span, ul.corp-pagination>li:last-child>a, ul.corp-pagination>li:last-child>span{
   border-radius: 0;
 }
+.footer{
+    background-color: #023436;
+    color: #fff;
+    padding: 18px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.sign-up-container{
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 4.9px 0.1px rgba(0, 0, 0, 0.1);
+  padding: 32px;
+}
+.sign-up-container h3{
+  color: #023436;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 28px;
+}
+input.flat-control{
+    border: 1px solid rgb(224, 224, 224);
+    background-color: rgb(255, 255, 255);
+    border-radius: 0;
+    height: 42px;
+    padding-left: 40px;
+    font-family: 'Open Sans', sans-serif;
+}
+input.flat-control:focus {
+    border-color: #00a886;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+    border-width: 1px;
+    outline: 0;
+    transition: 0.4s;
+}
+.icon-group-user, .icon-group-email{
+  position: relative;
+  margin-bottom: 24px;
+}
+.icon-group-user:before{
+    content: "u";
+    position: absolute;
+    left: 14px;
+    font-size: 22px;
+    top: 50%;
+    color: #00a886;
+    margin-top: -11px;
+}
+.icon-group-email:before{
+    content: "m";
+    position: absolute;
+    left: 14px;
+    font-size: 20px;
+    top: 50%;
+    color: #00a886;
+    margin-top: -10px;
+}
+.m-t-lg{
+  margin-top: 10px;
+}
+
 /*---------Media Queries-----------*/
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
 and (orientation : portrait) {
   .sticky{
     position: static;
@@ -541,9 +622,9 @@ and (orientation : portrait) {
   }
 }
 
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
 and (orientation : landscape) {
   .company-logo{
     background-size: contain;
@@ -551,9 +632,9 @@ and (orientation : landscape) {
   }
 }
 
-@media only screen
-and (min-device-width : 320px)
-and (max-device-width : 667px) {
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 667px) { 
   .sticky{
     position: static;
     height: auto;

@@ -6,23 +6,24 @@ class Profile(models.Model):
     # Main profile model which contains details of trainer
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    country = models.CharField(max_length=100)
-    photo = models.FileField()
-    rating = models.FloatField()
+    password = models.CharField(max_length=20)
+    country = models.CharField(max_length=100, null=True)
+    photo = models.FileField(null=True, default="default_user.png")
+    rating = models.FloatField(null=True)
     email = models.CharField(max_length=200)
-    phone = models.CharField(max_length=20)
-    availability = models.CharField(max_length=20)
-    website = models.CharField(max_length=200)
-    address = models.CharField(max_length=500)
-    birth_date = models.DateField()
-    gender = models.CharField(max_length=10)
+    phone = models.CharField(max_length=20, null=True)
+    availability = models.CharField(max_length=20, null=True)
+    website = models.CharField(max_length=200, null=True)
+    address = models.CharField(max_length=500, null=True)
+    birth_date = models.DateField(null=True)
+    gender = models.CharField(max_length=10, null=True)
 
     def get_absolute_url(self):
         return reverse('trainer:detail', kwargs={'pk': self.pk})
 
     # For Profile.objects.all() call it will return first name and last name
     def __str__(self):
-        return self.first_name + ' ' + self.last_name + ' (' + self.country + ')'
+        return self.first_name + ' ' + self.last_name
 
 
 class Skill(models.Model):
