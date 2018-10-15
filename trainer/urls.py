@@ -14,6 +14,8 @@ urlpatterns = [
     url(r'^(?P<pk>\d+)/$', views.DetailView.as_view(), name='detail'),
 
     # /trainer/signup/
-    url(r'^signup/$', views.registration, name='signup')
-]
+    url(r'^signup/$', views.registration, name='signup'),
 
+    # /trainer/newacct/
+    url(r'^newacct/$', views.newacct, name='newacct')
+]

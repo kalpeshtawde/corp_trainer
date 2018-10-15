@@ -18,8 +18,8 @@ class Profile(models.Model):
     birth_date = models.DateField(null=True)
     gender = models.CharField(max_length=10, null=True)
 
-    def get_absolute_url(self):
-        return reverse('trainer:detail', kwargs={'pk': self.pk})
+#    def get_absolute_url(self):
+#        return reverse('trainer:detail', kwargs={'pk': self.pk})
 
     # For Profile.objects.all() call it will return first name and last name
     def __str__(self):

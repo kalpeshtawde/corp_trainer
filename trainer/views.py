@@ -1,6 +1,6 @@
 from django.views import generic
 from django.shortcuts import render
-from .forms import RegistrationForm
+from .forms import RegistrationForm, SearchForm
 from .models import Profile
 
 
@@ -14,9 +14,22 @@ class SignupView(generic.TemplateView):
 
 class ListingView(generic.ListView):
     template_name = 'trainer/user_listing.html'
+    model = Profile
 
     def get_queryset(self):
-        return Profile.objects.all()
+        queryset = super(ListingView, self).get_queryset()
+        if 'search' in self.request.GET:
+            queryset = queryset.filter(first_name=self.request.GET['search'])
+        return queryset
+
+    # instead of get_queryset or get, here get_context_data is used
+    # without this a form cannot be visible
+    # here search box was not visible
+    def get_context_data(self, **kwargs):
+        context = super(ListingView, self).get_context_data(**kwargs)
+        context['search'] = self.request.GET.get('search', 'give-default-value')
+        context['form'] = SearchForm()
+        return context
 
 
 class DetailView(generic.DetailView):
@@ -40,3 +53,7 @@ def registration(request):
         "form": form,
     }
     return render(request, "trainer/sign_up.html", context)
+
+
+def newacct(request):
+    return render(request, "trainer/acct_created.html")
