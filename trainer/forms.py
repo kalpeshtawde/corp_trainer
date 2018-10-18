@@ -1,5 +1,22 @@
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.models import User
 from .models import Profile
+
+
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(
+        max_length=30,
+        widget=forms.TextInput(
+            attrs={'class': 'form-control flat-control', 'name': 'username'}
+        )
+    )
+    password = forms.CharField(
+        max_length=30,
+        widget=forms.TextInput(
+            attrs={'class': 'form-control flat-control', 'name': 'password'}
+        )
+    )
 
 
 class RegistrationForm(forms.Form):
@@ -71,3 +88,32 @@ class SearchForm(forms.Form):
         ),
         required=False
     )
+
+
+class UserForm(forms.ModelForm):
+
+    username = forms.CharField(
+        max_length=20,
+        widget=forms.TextInput(
+            attrs={'class': "form-control flat-control", 'placeholder': 'Username'}
+        ),
+        required=False
+    )
+    email = forms.CharField(
+        max_length=50,
+        widget=forms.TextInput(
+            attrs={'class': "form-control flat-control", 'placeholder': 'Email'}
+        ),
+        required=False
+    )
+    password = forms.CharField(
+        max_length=20,
+        widget=forms.PasswordInput(
+            attrs={'class': "form-control flat-control", 'placeholder': 'Password'}
+        ),
+        required=False
+    )
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password']

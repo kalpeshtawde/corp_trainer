@@ -1,0 +1,48 @@
+{% extends 'trainer/base.html' %}
+{% load static %}
+
+{% block body %}
+<div class="container">
+  <div class="middle-section">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="sign-up-container">
+          <h3>Sign up</h3>
+          <form method="post" action="">
+             {% csrf_token %}
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group icon-group-user">
+                      {{form.visible_fields.0}}
+                      {{form.username.errors}}
+                  </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group icon-group-email">
+                  {{form.visible_fields.1}}
+                  {{form.email.errors}}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group icon-group-password">
+                  {{form.visible_fields.2}}
+                  {{form.password.errors}}
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-message m-t-lg" type="submit">
+                Create Account
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

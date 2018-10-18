@@ -28,11 +28,13 @@
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
         	<div class="user-pic" style="background: url('/static/trainer/img/user.jpg') center no-repeat;"></div>
         </a>
+        {% if user.is_authenticated %}
         <ul class="dropdown-menu">
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Setting</a></li>
-          <li><a href="#">Logout</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Setting</a></li>
+            <li><a href="{% url 'trainer:logout' %}">Logout</a></li>
         </ul>
+        {% endif %}
       	</li>
       </ul>
     </div>
