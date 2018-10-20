@@ -10,26 +10,32 @@
           <h3>Sign up</h3>
           <form method="post" action="">
              {% csrf_token %}
+               <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group icon-group-user">
+                      {{form.visible_fields.0}}
+                      {{form.first_name.errors}}
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group icon-group-user">
+                      {{form.visible_fields.1}}
+                      {{form.last_name.errors}}
+                    </div>
+                  </div>
+              </div>
               <div class="row">
                 <div class="col-sm-12">
-                  <div class="form-group icon-group-user">
-                      {{form.visible_fields.0}}
+                  <div class="form-group icon-group-email">
+                      {{form.visible_fields.2}}
                       {{form.username.errors}}
                   </div>
                 </div>
             </div>
             <div class="row">
               <div class="col-sm-12">
-                <div class="form-group icon-group-email">
-                  {{form.visible_fields.1}}
-                  {{form.email.errors}}
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-12">
                 <div class="form-group icon-group-password">
-                  {{form.visible_fields.2}}
+                  {{form.visible_fields.3}}
                   {{form.password.errors}}
                 </div>
               </div>

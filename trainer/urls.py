@@ -20,9 +20,6 @@ urlpatterns = [
     # /trainer/123/
     url(r'^(?P<pk>\d+)/$', views.DetailView.as_view(), name='detail'),
 
-    # /trainer/signup/
-    #url(r'^signup/$', views.registration, name='signup'),
-
     # /trainer/register/
     url(r'^register/$', views.UserFormView.as_view(), name='register'),
 

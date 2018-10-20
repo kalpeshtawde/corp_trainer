@@ -1,16 +1,11 @@
 from django.views import generic
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
-from .forms import RegistrationForm, SearchForm, UserForm
+from .forms import SearchForm, UserForm
 from .models import Profile
 
 
 class IndexView(generic.ListView):
     template_name = 'trainer/index.html'
-
-
-class SignupView(generic.TemplateView):
-    template_name = 'trainer/sign_up.html'
 
 
 class ListingView(generic.ListView):
@@ -65,26 +60,9 @@ class UserFormView(generic.View):
             user.set_password(password)
             user.save()
 
+            return redirect('trainer:newacct')
+
         return render(request, self.template_name, {'form':form})
-
-
-# def registration(request):
-#     form = RegistrationForm(request.POST or None)
-#
-#     if form.is_valid():
-#         p = Profile(
-#             first_name=form.cleaned_data.get('first_name'),
-#             last_name=form.cleaned_data.get('last_name'),
-#             email=form.cleaned_data.get('email'),
-#             password=form.cleaned_data.get('password')
-#         )
-#         p.save()
-#
-#     context = {
-#         "form": form,
-#     }
-#     return render(request, "trainer/sign_up.html", context)
-
 
 def newacct(request):
     return render(request, "trainer/acct_created.html")

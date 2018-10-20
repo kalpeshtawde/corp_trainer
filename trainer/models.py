@@ -1,15 +1,15 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
+
+User = get_user_model()
 
 class Profile(models.Model):
     # Main profile model which contains details of trainer
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    password = models.CharField(max_length=20)
+    profile = models.ForeignKey(User, on_delete=models.CASCADE)
     country = models.CharField(max_length=100, null=True)
     photo = models.FileField(null=True, default="default_user.png")
     rating = models.FloatField(null=True)
-    email = models.CharField(max_length=200)
     phone = models.CharField(max_length=20, null=True)
     availability = models.CharField(max_length=20, null=True)
     website = models.CharField(max_length=200, null=True)
@@ -22,7 +22,7 @@ class Profile(models.Model):
 
     # For Profile.objects.all() call it will return first name and last name
     def __str__(self):
-        return self.first_name + ' ' + self.last_name
+        return self.country
 
 
 class Skill(models.Model):
