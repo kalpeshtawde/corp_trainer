@@ -8,12 +8,12 @@ class Profile(models.Model):
     # Main profile model which contains details of trainer
     profile = models.ForeignKey(User, on_delete=models.CASCADE)
     country = models.CharField(max_length=100, null=True)
-    photo = models.FileField(null=True, default="default_user.png")
-    rating = models.FloatField(null=True)
+    photo = models.FileField(null=True, default="default_user.png", blank=True)
+    rating = models.FloatField(null=True, blank=True)
     phone = models.CharField(max_length=20, null=True)
-    availability = models.CharField(max_length=20, null=True)
-    website = models.CharField(max_length=200, null=True)
-    address = models.CharField(max_length=500, null=True)
+    availability = models.CharField(max_length=20, null=True, blank=True)
+    website = models.CharField(max_length=200, null=True, blank=True)
+    address = models.CharField(max_length=500, null=True, blank=True)
     birth_date = models.DateField(null=True)
     gender = models.CharField(max_length=10, null=True)
 
@@ -22,7 +22,7 @@ class Profile(models.Model):
 
     # For Profile.objects.all() call it will return first name and last name
     def __str__(self):
-        return self.country
+        return self.profile.first_name + " " + self.profile.last_name
 
 
 class Skill(models.Model):

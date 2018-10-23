@@ -1,5 +1,8 @@
 from django.views import generic
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.db.models import Q
+
 from .forms import SearchForm, UserForm
 from .models import Profile
 
@@ -14,8 +17,15 @@ class ListingView(generic.ListView):
 
     def get_queryset(self):
         queryset = super(ListingView, self).get_queryset()
+
+        # admin user not needed to show in user listing
+        # queryset = queryset.exclude(User__username='admin')
+
         if 'search' in self.request.GET:
-            queryset = queryset.filter(first_name__contains=self.request.GET['search'])
+            queryset = queryset.filter(
+                Q(first_name__contains=self.request.GET['search']) |
+                Q(last_name__contains=self.request.GET['search'])
+            )
         return queryset
 
     # instead of get_queryset or get, here get_context_data is used
@@ -24,12 +34,13 @@ class ListingView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super(ListingView, self).get_context_data(**kwargs)
         context['search'] = self.request.GET.get('search', 'give-default-value')
+        context['user_id'] = Profile.objects.get(profile=self.request.user.id   ).photo
         context['form'] = SearchForm()
         return context
 
 
 class DetailView(generic.DetailView):
-    model = Profile
+    model = User
     template_name = 'trainer/detail.html'
 
     def get_context_data(self, **kwargs):
