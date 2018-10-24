@@ -6,7 +6,7 @@ User = get_user_model()
 
 class Profile(models.Model):
     # Main profile model which contains details of trainer
-    profile = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     country = models.CharField(max_length=100, null=True)
     photo = models.FileField(null=True, default="default_user.png", blank=True)
     rating = models.FloatField(null=True, blank=True)
@@ -22,12 +22,12 @@ class Profile(models.Model):
 
     # For Profile.objects.all() call it will return first name and last name
     def __str__(self):
-        return self.profile.first_name + " " + self.profile.last_name
+        return self.user.first_name + " " + self.user.last_name
 
 
 class Skill(models.Model):
     # Skill model which contains trainer's skill details
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     hours = models.IntegerField()
 
@@ -37,7 +37,7 @@ class Skill(models.Model):
 
 class Timeline(models.Model):
     # Timeline model which contains trainer's training history
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     organization = models.CharField(max_length=200)
     technology = models.CharField(max_length=500)
     from_date = models.DateField()
@@ -50,7 +50,7 @@ class Timeline(models.Model):
 
 class Experience(models.Model):
     # Experience model which contains trainer's past work experience
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     organization = models.CharField(max_length=200)
     from_date = models.DateField()
     to_date = models.DateField()

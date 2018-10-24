@@ -16,7 +16,7 @@ class ListingView(generic.ListView):
     model = Profile
 
     def get_queryset(self):
-        queryset = super(ListingView, self).get_queryset()
+        queryset = super(ListingView, self).get_queryset().prefetch_related("user")
 
         # admin user not needed to show in user listing
         # queryset = queryset.exclude(User__username='admin')
@@ -34,13 +34,13 @@ class ListingView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super(ListingView, self).get_context_data(**kwargs)
         context['search'] = self.request.GET.get('search', 'give-default-value')
-        context['user_id'] = Profile.objects.get(profile=self.request.user.id   ).photo
+        #context['user_id'] = Profile.objects.get(user=self.request.user.id).photo
         context['form'] = SearchForm()
         return context
 
 
 class DetailView(generic.DetailView):
-    model = User
+    model = Profile
     template_name = 'trainer/detail.html'
 
     def get_context_data(self, **kwargs):
