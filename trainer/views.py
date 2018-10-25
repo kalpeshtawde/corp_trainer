@@ -78,3 +78,5 @@ class UserFormView(generic.View):
 def newacct(request):
     return render(request, "trainer/acct_created.html")
 
+def update(request):
+    return render(request, "trainer/edit_profile.html")

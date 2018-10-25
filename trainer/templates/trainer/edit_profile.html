@@ -1,0 +1,335 @@
+{% extends 'trainer/base.html' %}
+{% load static %}
+
+{% block body %}
+    <nav class="navbar navbar-default header-section navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="navbar-brand logo-cntnr"><img src="img/logo.png" class="img-responsive"></div>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right navbar-menu ">
+                        <li>
+                            <div class="form-group">
+                                <input type="text" name="" placeholder="Search" class="form-control searchbox">
+                                <span class="search-btn"><i class="icon-search"></i></span>
+                            </div>
+                        </li>
+                        <li><a href="#"><span class="icon-notifications"><div class="badge">5</div></span></a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        	<div class="user-pic" style="background: url(img/user.jpg) center no-repeat;"></div>
+        </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Profile</a></li>
+                                <li><a href="#">Setting</a></li>
+                                <li><a href="#">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <div class="middle-section">
+                    <div class="tab-section">
+                        <ul class="nav nav-tabs flat-tabs">
+                            <li class="active"><a data-toggle="tab" href="#timeline"><i class="icon-visibility"></i> Timeline</a></li>
+                            <li><a data-toggle="tab" href="#work"><i class="icon-card_travel"></i> Work Experience</a></li>
+                            <li><a data-toggle="tab" href="#about"><i class="icon-person"></i> About</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="timeline" class="tab-pane fade in active">
+                                <div class="info-sections">
+                                    <h4>MY TRAININGS</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-default">
+                                            <thead>
+                                                <tr>
+                                                    <th>Company Name</th>
+                                                    <th>Start Date</th>
+                                                    <th>Duration</th>
+                                                    <th>Attendants</th>
+                                                    <th>Technologies</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <input type="text" name="" class="form-control" placeholder="i.e Capgemini">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <input type="text" name="" class="form-control" aria-describedby="date-addon">
+                                                            <span class="input-group-addon" id="date-addon1"><i class="icon icon-insert_invitation"></i></span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <select class="form-control">
+                                                                <option>24 Hrs</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <select class="form-control">
+                                                                <option>1 - 10</option>
+                                                                <option>11 - 20</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <input type="text" name="" class="form-control" placeholder="i.e Java">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-add"><i class="icon icon-add"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Cognizant Infotech</td>
+                                                    <td>13-10-2018</td>
+                                                    <td>24 Hours</td>
+                                                    <td>50</td>
+                                                    <td>HTML, CSS, Javascript, jQuery, Bootstrap</td>
+                                                    <td>
+                                                        <button class="btn btn-edit"><i class="icon icon-mode_edit"></i></button>
+                                                        <button class="btn btn-delete"><i class="icon icon-delete"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Cognizant Infotech</td>
+                                                    <td>13-10-2018</td>
+                                                    <td>24 Hours</td>
+                                                    <td>50</td>
+                                                    <td>HTML, CSS, Javascript, jQuery, Bootstrap</td>
+                                                    <td>
+                                                        <button class="btn btn-edit"><i class="icon icon-mode_edit"></i></button>
+                                                        <button class="btn btn-delete"><i class="icon icon-delete"></i></button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="work" class="tab-pane fade">
+                                <div class="info-sections">
+                                    <h4 class="pull-left">WORK EXPERIENCE</h4>
+                                    <button class="btn btn-add pull-right m-b-lg" data-toggle="modal" data-target="#addCompany"><i class="icon icon-add"></i></button>
+                                    <div class="clearfix"></div>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <a data-toggle="modal" data-target="#addCompany" class="no-decoration">
+		    				<div class="exist-training-container">
+		    					<div class="train-header"><h3>Pinnacle Infotech</h3></div>
+		    					<table class="table table-default table-borderless-border">
+		    						<tbody>
+		    							<tr>
+		    								<td><b>Duration:</b></td>
+		    								<td>Jan 2017 - Dec 2017</td>
+		    							</tr>
+		    							<tr>
+		    								<td style="padding-bottom: 0;"><b>Job Duties:</b></td>
+		    							</tr>
+		    							<tr>
+		    								<td colspan="2">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. remque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+											</td>
+		    							</tr>
+		    						</tbody>
+		    					</table>
+		    				</div>
+		    				</a>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <a data-toggle="modal" data-target="#addCompany" class="no-decoration">
+		    				<div class="exist-training-container">
+		    					<div class="train-header"><h3>Pinnacle Infotech</h3></div>
+		    					<table class="table table-default table-borderless-border">
+		    						<tbody>
+		    							<tr>
+		    								<td><b>Duration:</b></td>
+		    								<td>Jan 2017 - Dec 2017</td>
+		    							</tr>
+		    							<tr>
+		    								<td style="padding-bottom: 0;"><b>Job Duties:</b></td>
+		    							</tr>
+		    							<tr>
+		    								<td colspan="2">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. remque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+											</td>
+		    							</tr>
+		    						</tbody>
+		    					</table>
+		    				</div>
+		    				</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="about" class="tab-pane fade">
+                                <div class="info-sections">
+                                    <form>
+                                        <button class="btn btn-edit pull-right m-b-lg"><i class="icon icon-mode_edit"></i></button>
+                                        <button class="btn btn-add pull-right m-b-lg"><i class="icon icon-check"></i></button>
+                                        <div class="row">
+                                            <div class="col-sm-4 m-b-lg">
+                                                <h4>CONTACT INFORMATION</h4>
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input type="email" class="form-control" value="mikewill@gmail.com" disabled>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Phone</label>
+                                                    <input type="text" class="form-control" value="+1 123 574 5621" disabled>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Availability</label>
+                                                    <input type="text" class="form-control" value="10am to 6pm" disabled>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Website</label>
+                                                    <input type="text" class="form-control" value="www.mikewillmade.it" disabled>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Address</label>
+                                                    <input type="text" class="form-control" value="214, 8th Street, Miami Beach, Miami, FL 102-253" disabled>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" value="214, 8th Street, Miami Beach, Miami, FL 102-253" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4 col-sm-offset-1">
+                                                <h4>PERSONAL INFORMATION</h4>
+                                                <label>Birthday</label>
+                                                <div class="input-group form-group">
+                                                    <input type="text" name="" class="form-control" aria-describedby="date-addon" disabled value="13-11-1985">
+                                                    <span class="input-group-addon" id="date-addon1"><i class="icon icon-insert_invitation"></i></span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Gender</label>
+                                                    <select class="form-control" disabled>
+                                                        <option>Male</option>
+                                                        <option>Female</option>
+                                                        <option>Other</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 col-sm-offset-1 col-xs-6">
+                    <div class="foot-list-heading">Company</div>
+                    <ul type="none" class="foot-links">
+                        <li><a>About Us</a></li>
+                        <li><a>Offices</a></li>
+                        <li><a>Careers</a></li>
+                        <li><a>Press</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 col-sm-offset-1 col-xs-6">
+                    <div class="foot-list-heading">Terms</div>
+                    <ul type="none" class="foot-links">
+                        <li><a>Trust & Safety</a></li>
+                        <li><a>Terms of Service</a></li>
+                        <li><a>Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 col-sm-offset-1 col-xs-12">
+                    <div class="foot-list-heading">Follow Us</div>
+                    <ul type="none" class="foot-social">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lower-footer">
+                © 2018 Corp Trainer Inc. All Rights Reserved.
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="addCompany" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add/Edit Work Experience</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label>Company Name</label>
+                            <input type="text" name="" class="form-control">
+                        </div>
+                        <div class="col-sm-3 zeropadding-left zeropadding-both-xs">
+                            <div class="form-group">
+                                <label>From month</label>
+                                <select name="" class="form-control">
+                                    <option>Jan</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 zeropadding-left zeropadding-both-xs">
+                            <div class="form-group">
+                                <label>year</label>
+                                <select name="" class="form-control">
+                                    <option>2017</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 zeropadding-right zeropadding-both-xs">
+                            <div class="form-group">
+                                <label>To month</label>
+                                <select name="" class="form-control">
+                                    <option>Jan</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 zeropadding-right zeropadding-both-xs">
+                            <div class="form-group">
+                                <label>year</label>
+                                <select name="" class="form-control">
+                                    <option>2017</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Job Duties</label>
+                            <textarea class="form-control" rows="4"></textarea>
+                        </div>
+                        <div class="text-right">
+                            <button class="btn btn-message">Add</button>
+                            <button class="btn btn-link">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

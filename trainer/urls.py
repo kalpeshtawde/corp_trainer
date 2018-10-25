@@ -24,5 +24,8 @@ urlpatterns = [
     url(r'^register/$', views.UserFormView.as_view(), name='register'),
 
     # /trainer/newacct/
-    url(r'^newacct/$', views.newacct, name='newacct')
+    url(r'^newacct/$', views.newacct, name='newacct'),
+
+    # /trainer/update/
+    url(r'^update/$', views.update, name='update'),
 ]
