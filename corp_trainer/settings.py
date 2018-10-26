@@ -132,7 +132,7 @@ MEDIA_URL = '/media/'
 
 
 LOGIN_REDIRECT_URL=reverse_lazy('trainer:listing')
-
+LOGIN_URL = reverse_lazy('trainer:login')
 #AUTHENTICATION_BACKENDS = (
 #    'trainer.backends.EmailBackend',
 #)

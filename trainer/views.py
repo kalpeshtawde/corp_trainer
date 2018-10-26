@@ -1,6 +1,6 @@
 from django.views import generic
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
 from .forms import SearchForm, UserForm
@@ -78,5 +78,6 @@ class UserFormView(generic.View):
 def newacct(request):
     return render(request, "trainer/acct_created.html")
 
+@login_required()
 def update(request):
     return render(request, "trainer/edit_profile.html")
