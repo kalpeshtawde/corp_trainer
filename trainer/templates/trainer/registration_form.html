@@ -31,20 +31,31 @@
                       {{form.username.errors}}
                   </div>
                 </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="form-group icon-group-password">
-                  {{form.visible_fields.3}}
-                  {{form.password.errors}}
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group icon-group-password">
+                    {{form.visible_fields.3}}
+                    {{form.password.errors}}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="text-center">
-              <button class="btn btn-message m-t-lg" type="submit">
-                Create Account
-              </button>
-            </div>
+              <div class="text-center">
+                <button class="btn btn-message m-t-lg" type="submit">
+                  Create Account
+                </button>
+              </div>
+          </form>
+        </div>
+        <div class="sign-up-container">
+          <h3>Already have account?</h3>
+          <form method="post" action="">
+             {% csrf_token %}
+              <div class="text-center">
+                <button class="btn btn-message m-t-lg" type="submit">
+                  <Login></Login>
+                </button>
+              </div>
           </form>
         </div>
       </div>

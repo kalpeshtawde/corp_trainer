@@ -31,8 +31,7 @@
         	<!--<div class="user-pic" style="background: url('/media/{{user_id}}') center no-repeat;"></div>-->
         </a>
         <ul class="dropdown-menu">
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Setting</a></li>
+            <li><a href="{% url 'trainer:update' %}">Edit Profile</a></li>
             <li><a href="{% url 'trainer:logout' %}">Logout</a></li>
         </ul>
         {% endif %}
