@@ -1,5 +1,96 @@
 {% load static %}
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 col-sm-offset-1 col-xs-6">
+                    <div class="foot-list-heading">Company</div>
+                    <ul type="none" class="foot-links">
+                        <li><a>About Us</a></li>
+                        <li><a>Offices</a></li>
+                        <li><a>Careers</a></li>
+                        <li><a>Press</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 col-sm-offset-1 col-xs-6">
+                    <div class="foot-list-heading">Terms</div>
+                    <ul type="none" class="foot-links">
+                        <li><a>Trust & Safety</a></li>
+                        <li><a>Terms of Service</a></li>
+                        <li><a>Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 col-sm-offset-1 col-xs-12">
+                    <div class="foot-list-heading">Follow Us</div>
+                    <ul type="none" class="foot-social">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lower-footer">
+                © 2018 Corp Trainer Inc. All Rights Reserved.
+            </div>
+        </div>
+    </div>
 
-<div class="footer text-center">
-  © 2018 Corp Trainer Inc. All Rights Reserved.
-</div>
+    <!-- Modal -->
+    <div id="addCompany" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add/Edit Work Experience</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label>Company Name</label>
+                            <input type="text" name="" class="form-control">
+                        </div>
+                        <div class="col-sm-3 zeropadding-left zeropadding-both-xs">
+                            <div class="form-group">
+                                <label>From month</label>
+                                <select name="" class="form-control">
+                                    <option>Jan</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 zeropadding-left zeropadding-both-xs">
+                            <div class="form-group">
+                                <label>year</label>
+                                <select name="" class="form-control">
+                                    <option>2017</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 zeropadding-right zeropadding-both-xs">
+                            <div class="form-group">
+                                <label>To month</label>
+                                <select name="" class="form-control">
+                                    <option>Jan</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 zeropadding-right zeropadding-both-xs">
+                            <div class="form-group">
+                                <label>year</label>
+                                <select name="" class="form-control">
+                                    <option>2017</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Job Duties</label>
+                            <textarea class="form-control" rows="4"></textarea>
+                        </div>
+                        <div class="text-right">
+                            <button class="btn btn-message">Add</button>
+                            <button class="btn btn-link">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
