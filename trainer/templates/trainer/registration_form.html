@@ -49,11 +49,11 @@
         </div>
         <div class="sign-up-container">
           <h3>Already have account?</h3>
-          <form method="post" action="">
+          <form method="get" action="{% url 'trainer:login' %}">
              {% csrf_token %}
               <div class="text-center">
                 <button class="btn btn-message m-t-lg" type="submit">
-                  <Login></Login>
+                  <Login>Login</Login>
                 </button>
               </div>
           </form>

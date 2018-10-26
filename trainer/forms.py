@@ -1,6 +1,9 @@
+import re
+
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
+
 from .models import Profile
 
 
@@ -92,6 +95,8 @@ class UserForm(forms.ModelForm):
         username = self.cleaned_data.get('username')
         if not username:
             raise forms.ValidationError("Please enter email")
+        if not re.match(r'.+@.+\..+', username):
+            raise forms.ValidationError("Invalid email id")
         if User.objects.filter(username=username).exists():
             raise forms.ValidationError("Email already registered")
         return username
