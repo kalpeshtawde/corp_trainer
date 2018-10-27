@@ -18,14 +18,14 @@
                                 <div class="info-sections">
                                     <h4>MY TRAININGS</h4>
                                     <div class="table-responsive">
-                                        <table class="table table-default">
+                                            <table class="table table-default">
                                             <thead>
                                                 <tr>
                                                     <th>Company Name</th>
-                                                    <th>Start Date</th>
-                                                    <th>Duration</th>
-                                                    <th>Attendants</th>
                                                     <th>Technologies</th>
+                                                    <th>Start Date</th>
+                                                    <th>Duration(Hrs)</th>
+                                                    <th>Attendants</th>
                                                     <th>Actions</th>
                                                 </tr>
                                             </thead>
@@ -33,33 +33,28 @@
                                                 <tr>
                                                     <td>
                                                         <div class="form-group">
-                                                            <input type="text" name="" class="form-control" placeholder="i.e Capgemini">
+                                                            {{form.visible_fields.0}}
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            {{form.visible_fields.1}}
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="input-group">
-                                                            <input type="text" name="" class="form-control" aria-describedby="date-addon">
+                                                            {{form.visible_fields.2}}
                                                             <span class="input-group-addon" id="date-addon1"><i class="icon icon-insert_invitation"></i></span>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group">
-                                                            <select class="form-control">
-                                                                <option>24 Hrs</option>
-                                                            </select>
-                                                        </div>
+                                                            {{form.visible_fields.3}}
+                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group">
-                                                            <select class="form-control">
-                                                                <option>1 - 10</option>
-                                                                <option>11 - 20</option>
-                                                            </select>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <input type="text" name="" class="form-control" placeholder="i.e Java">
+                                                            {{form.visible_fields.4}}
                                                         </div>
                                                     </td>
                                                     <td>

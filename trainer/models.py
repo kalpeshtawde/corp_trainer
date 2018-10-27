@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+
 class Profile(models.Model):
     # Main profile model which contains details of trainer
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -38,12 +39,11 @@ class Skill(models.Model):
 class Timeline(models.Model):
     # Timeline model which contains trainer's training history
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    organization = models.CharField(max_length=200)
-    technology = models.CharField(max_length=500)
-    from_date = models.DateField()
-    to_date = models.DateField()
-    hours = models.IntegerField()
-    trainee_cnt = models.IntegerField()
+    organization = models.CharField(max_length=200, blank=False)
+    technology = models.CharField(max_length=500, blank=False)
+    from_date = models.DateField(blank=False)
+    hours = models.CharField(max_length=10, blank=False)
+    trainee_cnt = models.CharField(max_length=10, blank=False)
 
     def __str__(self):
         return self.organization

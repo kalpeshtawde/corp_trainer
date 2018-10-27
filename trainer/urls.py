@@ -27,5 +27,5 @@ urlpatterns = [
     url(r'^newacct/$', views.newacct, name='newacct'),
 
     # /trainer/update/
-    url(r'^update/$', views.update, name='update'),
+    url(r'^update/$', views.TimelineView.as_view(), name='update'),
 ]

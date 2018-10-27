@@ -3,8 +3,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
-from .forms import SearchForm, UserForm
-from .models import Profile
+from .forms import SearchForm, UserForm, TimelineForm
+from .models import Profile, Timeline
 
 
 class IndexView(generic.ListView):
@@ -74,6 +74,17 @@ class UserFormView(generic.View):
             return redirect('trainer:newacct')
 
         return render(request, self.template_name, {'form':form})
+
+
+class TimelineView(generic.View):
+    form_class = TimelineForm
+    template_name = 'trainer/edit_profile.html'
+
+    # display blank form
+    def get(self, request):
+        form = self.form_class(None)
+        return render(request, self.template_name, {'form':form})
+
 
 def newacct(request):
     return render(request, "trainer/acct_created.html")
