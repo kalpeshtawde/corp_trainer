@@ -1,8 +1,7 @@
 from django.views import generic
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
-
+from django.db.models import Q, Count
 from .forms import SearchForm, UserForm, TimelineForm
 from .models import Profile, Timeline
 
@@ -16,7 +15,8 @@ class ListingView(generic.ListView):
     model = Profile
 
     def get_queryset(self):
-        queryset = super(ListingView, self).get_queryset().prefetch_related("user")
+        queryset = super(ListingView, self).get_queryset()
+        queryset = queryset.prefetch_related('user')
 
         # admin user not needed to show in user listing
         # queryset = queryset.exclude(User__username='admin')
@@ -26,21 +26,31 @@ class ListingView(generic.ListView):
                 Q(user__first_name__contains=self.request.GET['search']) |
                 Q(user__last_name__contains=self.request.GET['search'])
             )
+
+        queryset = queryset.annotate(total_cnt=Count('id'))
+
         return queryset
 
     # instead of get_queryset or get, here get_context_data is used
     # without this a form cannot be visible
     # here search box was not visible
-    # def get_context_data(self, **kwargs):
-    #     context = super(ListingView, self).get_context_data(**kwargs)
-    #     context['search'] = self.request.GET.get('search', 'give-default-value')
-    #     #context['form'] = SearchForm()
-    #     return context
+    def get_context_data(self, **kwargs):
+        context = super(ListingView, self).get_context_data(**kwargs)
+        context['search'] = self.request.GET.get('search', 'give-default-value')
+        context['form'] = SearchForm()
+        context['count'] = self.get_queryset().count()
+        return context
 
 
 class DetailView(generic.DetailView):
     model = Profile
     template_name = 'trainer/detail.html'
+
+    def get_queryset(self):
+        queryset = super(DetailView, self).get_queryset()
+        queryset = queryset.prefetch_related('user')
+
+        return queryset
 
     # def get_context_data(self, **kwargs):
     #     context = super(DetailView, self).get_context_data(**kwargs)
@@ -81,7 +91,7 @@ class TimelineView(generic.ListView):
 
     def get_queryset(self):
         queryset = super(TimelineView, self).get_queryset()
-        queryset = queryset.filter(user=self.request.user).order_by('-form_date')
+        queryset = queryset.filter(user=self.request.user).order_by('-from_date')
         return queryset
 
     # Without this form input fields are not visible
