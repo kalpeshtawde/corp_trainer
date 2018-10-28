@@ -23,31 +23,30 @@ class ListingView(generic.ListView):
 
         if 'search' in self.request.GET:
             queryset = queryset.filter(
-                Q(first_name__contains=self.request.GET['search']) |
-                Q(last_name__contains=self.request.GET['search'])
+                Q(user__first_name__contains=self.request.GET['search']) |
+                Q(user__last_name__contains=self.request.GET['search'])
             )
         return queryset
 
     # instead of get_queryset or get, here get_context_data is used
     # without this a form cannot be visible
     # here search box was not visible
-    def get_context_data(self, **kwargs):
-        context = super(ListingView, self).get_context_data(**kwargs)
-        context['search'] = self.request.GET.get('search', 'give-default-value')
-        #context['user_id'] = Profile.objects.get(user=self.request.user.id).photo
-        context['form'] = SearchForm()
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super(ListingView, self).get_context_data(**kwargs)
+    #     context['search'] = self.request.GET.get('search', 'give-default-value')
+    #     #context['form'] = SearchForm()
+    #     return context
 
 
 class DetailView(generic.DetailView):
     model = Profile
     template_name = 'trainer/detail.html'
 
-    def get_context_data(self, **kwargs):
-        context = super(DetailView, self).get_context_data(**kwargs)
-        context['search'] = self.request.GET.get('search', 'give-default-value')
-        context['form'] = SearchForm()
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super(DetailView, self).get_context_data(**kwargs)
+    #     context['search'] = self.request.GET.get('search', 'give-default-value')
+    #     context['form'] = SearchForm()
+    #     return context
 
 
 class UserFormView(generic.View):
@@ -66,7 +65,6 @@ class UserFormView(generic.View):
         if form.is_valid():
             user = form.save(commit=False)
 
-            #username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user.set_password(password)
             user.save()
@@ -76,14 +74,30 @@ class UserFormView(generic.View):
         return render(request, self.template_name, {'form':form})
 
 
-class TimelineView(generic.View):
+class TimelineView(generic.ListView):
     form_class = TimelineForm
+    model = Timeline
     template_name = 'trainer/edit_profile.html'
 
-    # display blank form
-    def get(self, request):
-        form = self.form_class(None)
-        return render(request, self.template_name, {'form':form})
+    def get_queryset(self):
+        queryset = super(TimelineView, self).get_queryset().order_by('-from_date')
+        return queryset
+
+    # Without this form input fields are not visible
+    # Here the form is returned
+    def get_context_data(self, **kwargs):
+        context = super(TimelineView, self).get_context_data(**kwargs)
+        context['form'] = self.form_class(None)
+        return context
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+
+        if form.is_valid():
+            timeline = form.save(commit=False)
+            timeline.user = request.user
+            timeline.save()
+            return redirect('trainer:update')
 
 
 def newacct(request):

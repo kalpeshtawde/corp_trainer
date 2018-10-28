@@ -18,7 +18,7 @@
 			<div class="form-group">
                 <form method="get " role="search" action="{% url 'trainer:listing' %}">
                     {% csrf_token %}
-                    {{form.visible_fields.0}}
+    				<input type="text" name="search" placeholder="Search" class="form-control searchbox">
                     <span class="search-btn"><i class="icon-search"></i></span>
                 </form>
 			</div>

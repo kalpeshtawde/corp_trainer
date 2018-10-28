@@ -138,11 +138,11 @@ class TimelineForm(forms.ModelForm):
         fields = ['organization', 'technology', 'from_date', 'hours', 'trainee_cnt']
 
         HOURS_CHOICE = (
-            ('lt_five', '< 5'),
-            ('five_to_ten', '5 - 10'),
-            ('ten_to_twenty', '10 - 20'),
-            ('twenty_to_thirty', '20 - 30'),
-            ('gt_thirty', '> 30'),
+            ('< 5', '< 5'),
+            ('5 - 10', '5 - 10'),
+            ('1 - 20', '10 - 20'),
+            ('2 - 30', '20 - 30'),
+            ('> 30', '> 30'),
         )
         TRAINEE_CNT= (
             ('1-10', '1-10'),

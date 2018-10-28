@@ -16,8 +16,10 @@
                         <div class="tab-content">
                             <div id="timeline" class="tab-pane fade in active">
                                 <div class="info-sections">
-                                    <h4>MY TRAININGS</h4>
-                                    <div class="table-responsive">
+                                    <form method="post" action="">
+                                        {% csrf_token %}
+                                        <h4>MY TRAININGS</h4>
+                                        <div class="table-responsive">
                                             <table class="table table-default">
                                             <thead>
                                                 <tr>
@@ -33,59 +35,51 @@
                                                 <tr>
                                                     <td>
                                                         <div class="form-group">
-                                                            {{form.visible_fields.0}}
+                                                            {{form.organization}}
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group">
-                                                            {{form.visible_fields.1}}
+                                                            {{form.technology}}
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="input-group">
-                                                            {{form.visible_fields.2}}
+                                                            {{form.from_date}}
                                                             <span class="input-group-addon" id="date-addon1"><i class="icon icon-insert_invitation"></i></span>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group">
-                                                            {{form.visible_fields.3}}
+                                                            {{form.hours}}
                                                          </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group">
-                                                            {{form.visible_fields.4}}
+                                                            {{form.trainee_cnt}}
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <button class="btn btn-add"><i class="icon icon-add"></i></button>
                                                     </td>
                                                 </tr>
+                                                {% for timeline in object_list %}
                                                 <tr>
-                                                    <td>Cognizant Infotech</td>
-                                                    <td>13-10-2018</td>
-                                                    <td>24 Hours</td>
-                                                    <td>50</td>
-                                                    <td>HTML, CSS, Javascript, jQuery, Bootstrap</td>
+                                                    <td>{{timeline.organization}}</td>
+                                                    <td>{{timeline.technology}}</td>
+                                                    <td>{{timeline.from_date}}</td>
+                                                    <td>{{timeline.hours}}</td>
+                                                    <td>{{timeline.trainee_cnt}}</td>
                                                     <td>
-                                                        <button class="btn btn-edit"><i class="icon icon-mode_edit"></i></button>
+                                                        <!--<button class="btn btn-edit"><i class="icon icon-mode_edit"></i></button>-->
                                                         <button class="btn btn-delete"><i class="icon icon-delete"></i></button>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Cognizant Infotech</td>
-                                                    <td>13-10-2018</td>
-                                                    <td>24 Hours</td>
-                                                    <td>50</td>
-                                                    <td>HTML, CSS, Javascript, jQuery, Bootstrap</td>
-                                                    <td>
-                                                        <button class="btn btn-edit"><i class="icon icon-mode_edit"></i></button>
-                                                        <button class="btn btn-delete"><i class="icon icon-delete"></i></button>
-                                                    </td>
-                                                </tr>
+                                                {% endfor %}
                                             </tbody>
                                         </table>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                             <div id="work" class="tab-pane fade">
