@@ -80,7 +80,8 @@ class TimelineView(generic.ListView):
     template_name = 'trainer/edit_profile.html'
 
     def get_queryset(self):
-        queryset = super(TimelineView, self).get_queryset().order_by('-from_date')
+        queryset = super(TimelineView, self).get_queryset()
+        queryset = queryset.filter(user=self.request.user).order_by('-form_date')
         return queryset
 
     # Without this form input fields are not visible

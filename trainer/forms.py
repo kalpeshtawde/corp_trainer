@@ -20,7 +20,7 @@ class LoginForm(AuthenticationForm):
     )
     password = forms.CharField(
         max_length=30,
-        widget=forms.TextInput(
+        widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control flat-control',
                 'name': 'password',
