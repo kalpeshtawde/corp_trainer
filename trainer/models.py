@@ -46,7 +46,7 @@ class Timeline(models.Model):
     trainee_cnt = models.CharField(max_length=10, blank=False)
 
     def __str__(self):
-        return self.organization
+        return self.organization                    
 
 class Experience(models.Model):
     # Experience model which contains trainer's past work experience

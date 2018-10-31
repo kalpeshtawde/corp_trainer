@@ -2,7 +2,7 @@ from django.views import generic
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Count
-from .forms import SearchForm, UserForm, TimelineForm
+from .forms import SearchForm, UserForm, TimelineForm, QuestionForm, AnswerForm
 from .models import Profile, Timeline
 
 
@@ -117,3 +117,64 @@ def newacct(request):
 @login_required()
 def update(request):
     return render(request, "trainer/edit_profile.html")
+
+
+class MainView(generic.TemplateView):
+    template_name = 'trainer/mainview.html'
+
+    def get(self, request, *args, **kwargs):
+        question_form = QuestionForm(self.request.GET or None)
+        answer_form = AnswerForm(self.request.GET or None)
+        context = self.get_context_data(**kwargs)
+        context['answer_form'] = answer_form
+        context['question_form'] = question_form
+        return self.render_to_response(context)
+
+
+class QuestionFormView(generic.FormView):
+    form_class = QuestionForm
+    template_name = 'trainer/mainview.html'
+    success_url = '/'
+
+    def post(self, request, *args, **kwargs):
+        question_form = self.form_class(request.POST)
+        answer_form = AnswerForm()
+        if question_form.is_valid():
+            #question_form.save()
+            return self.render_to_response(
+                self.get_context_data(
+                    success=True
+                )
+            )
+        else:
+            return self.render_to_response(
+                self.get_context_data(
+                    answer_form=answer_form,
+                    question_form=question_form,
+                )
+            )
+
+
+class AnswerFormView(generic.FormView):
+    form_class = AnswerForm
+    template_name = 'trainer/mainview.html'
+    success_url = '/'
+
+    def post(self, request, *args, **kwargs):
+        answer_form = self.form_class(request.POST)
+        question_form = QuestionForm()
+        if answer_form.is_valid():
+            #answer_form.save()
+            return self.render_to_response(
+                self.get_context_data(
+                    success=True
+                )
+            )
+        else:
+            return self.render_to_response(
+                self.get_context_data(
+                    answer_form=answer_form,
+                    question_form=question_form
+                )
+            )
+

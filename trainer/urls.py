@@ -28,4 +28,8 @@ urlpatterns = [
 
     # /trainer/update/
     url(r'^update/$', views.TimelineView.as_view(), name='update'),
+
+    url(r'^edit/$', views.MainView.as_view(), name='edit'),
+    url(r'^question/$', views.QuestionFormView.as_view(), name='question'),
+    url(r'^answer/$', views.AnswerFormView.as_view(), name='answer'),
 ]

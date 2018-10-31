@@ -159,3 +159,10 @@ class TimelineForm(forms.ModelForm):
                 choices=TRAINEE_CNT, attrs={'class': 'form-control'}
             ),
         }
+
+class QuestionForm(forms.Form):
+    pass
+
+
+class AnswerForm(forms.Form):
+    pass
