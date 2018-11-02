@@ -44,46 +44,39 @@
                     <h4 class="modal-title">Add/Edit Work Experience</h4>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form method="post" action="{% url 'trainer:experience' %}">
+                        {% csrf_token %}
                         <div class="form-group">
                             <label>Company Name</label>
-                            <input type="text" name="" class="form-control">
+                            {{experience_form.organization}}
                         </div>
                         <div class="col-sm-3 zeropadding-left zeropadding-both-xs">
                             <div class="form-group">
-                                <label>From month</label>
-                                <select name="" class="form-control">
-                                    <option>Jan</option>
-                                </select>
+                                <label>From Month</label>
+                                {{experience_form.from_month}}
                             </div>
                         </div>
                         <div class="col-sm-3 zeropadding-left zeropadding-both-xs">
                             <div class="form-group">
-                                <label>year</label>
-                                <select name="" class="form-control">
-                                    <option>2017</option>
-                                </select>
+                                <label>From Year</label>
+                                {{experience_form.from_year}}
                             </div>
                         </div>
                         <div class="col-sm-3 zeropadding-right zeropadding-both-xs">
                             <div class="form-group">
-                                <label>To month</label>
-                                <select name="" class="form-control">
-                                    <option>Jan</option>
-                                </select>
+                                <label>To Month</label>
+                                {{experience_form.to_month}}
                             </div>
                         </div>
                         <div class="col-sm-3 zeropadding-right zeropadding-both-xs">
                             <div class="form-group">
-                                <label>year</label>
-                                <select name="" class="form-control">
-                                    <option>2017</option>
-                                </select>
+                                <label>To Year</label>
+                                {{experience_form.to_year}}
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Job Duties</label>
-                            <textarea class="form-control" rows="4"></textarea>
+                            {{experience_form.desc}}
                         </div>
                         <div class="text-right">
                             <button class="btn btn-message">Add</button>

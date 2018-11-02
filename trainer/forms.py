@@ -1,10 +1,11 @@
 import re
+from datetime import datetime
 
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
 
-from .models import Timeline
+from .models import Timeline, Experience
 
 
 class LoginForm(AuthenticationForm):
@@ -159,6 +160,78 @@ class TimelineForm(forms.ModelForm):
                 choices=TRAINEE_CNT, attrs={'class': 'form-control'}
             ),
         }
+
+
+class ExperienceForm(forms.ModelForm):
+    organization = forms.CharField(
+        max_length=100,
+        widget=forms.TextInput(
+            attrs={'class': "form-control", 'rows': 4}
+        ),
+        required=True
+    )
+    desc = forms.CharField(
+        max_length=2000,
+        widget=forms.TextInput(
+            attrs={'class': "form-control", 'placeholder': 'i.e ABC Limited', 'type': 'text'}
+        ),
+        required=True
+    )
+    #from_date = forms.CharField(max_length=20, required=True)
+    #to_date = forms.CharField(max_length=20, required=True)
+
+    class Meta:
+        model = Experience
+        fields = [
+            'organization','desc',
+            'from_year', 'from_month',
+            'to_year', 'to_month'
+        ]
+
+        MONTHNAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+        MONTH_CHOICE = tuple((m, m) for m in MONTHNAMES)
+
+        start_year = 1950
+        end_year = datetime.now().year + 1
+        YEARS_CHOICE = tuple((a, a) for a in range(start_year, end_year)[::-1])
+
+        widgets = {
+            'from_year': forms.Select(
+                choices=YEARS_CHOICE,
+                attrs={
+                    'class': "form-control",
+                    'aria-describedby': 'date-addon',
+                    'type': 'text'
+                },
+            ),
+            'from_month': forms.Select(
+                choices=MONTH_CHOICE,
+                attrs={
+                    'class': "form-control",
+                    'aria-describedby': 'date-addon',
+                    'type': 'text'
+                },
+            ),
+            'to_year': forms.Select(
+                choices=YEARS_CHOICE,
+                attrs={
+                    'class': "form-control",
+                    'aria-describedby': 'date-addon',
+                    'type': 'text'
+                },
+            ),
+            'to_month': forms.Select(
+                choices=MONTH_CHOICE,
+                attrs={
+                    'class': "form-control",
+                    'aria-describedby': 'date-addon',
+                    'type': 'text'
+                },
+            ),
+        }
+
 
 class QuestionForm(forms.Form):
     pass

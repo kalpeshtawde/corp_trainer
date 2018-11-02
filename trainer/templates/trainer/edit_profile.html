@@ -16,7 +16,7 @@
                         <div class="tab-content">
                             <div id="timeline" class="tab-pane fade in active">
                                 <div class="info-sections">
-                                    <form method="post" action="">
+                                    <form method="post" action="{% url 'trainer:timeline' %}">
                                         {% csrf_token %}
                                         <h4>MY TRAININGS</h4>
                                         <div class="table-responsive">
@@ -35,35 +35,35 @@
                                                 <tr>
                                                     <td>
                                                         <div class="form-group">
-                                                            {{form.organization}}
+                                                            {{timeline_form.organization}}
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group">
-                                                            {{form.technology}}
+                                                            {{timeline_form.technology}}
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="input-group">
-                                                            {{form.from_date}}
+                                                            {{timeline_form.from_date}}
                                                             <span class="input-group-addon" id="date-addon1"><i class="icon icon-insert_invitation"></i></span>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group">
-                                                            {{form.hours}}
+                                                            {{timeline_form.hours}}
                                                          </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group">
-                                                            {{form.trainee_cnt}}
+                                                            {{timeline_form.trainee_cnt}}
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <button class="btn btn-add"><i class="icon icon-add"></i></button>
                                                     </td>
                                                 </tr>
-                                                {% for timeline in object_list %}
+                                                {% for timeline in user_data.0.timeline_set.all %}
                                                 <tr>
                                                     <td>{{timeline.organization}}</td>
                                                     <td>{{timeline.technology}}</td>
@@ -88,52 +88,31 @@
                                     <button class="btn btn-add pull-right m-b-lg" data-toggle="modal" data-target="#addCompany"><i class="icon icon-add"></i></button>
                                     <div class="clearfix"></div>
                                     <div class="row">
+                                        {% for experience in user_data.0.experience_set.all %}
                                         <div class="col-sm-4">
                                             <a data-toggle="modal" data-target="#addCompany" class="no-decoration">
-		    				<div class="exist-training-container">
-		    					<div class="train-header"><h3>Pinnacle Infotech</h3></div>
-		    					<table class="table table-default table-borderless-border">
-		    						<tbody>
-		    							<tr>
-		    								<td><b>Duration:</b></td>
-		    								<td>Jan 2017 - Dec 2017</td>
-		    							</tr>
-		    							<tr>
-		    								<td style="padding-bottom: 0;"><b>Job Duties:</b></td>
-		    							</tr>
-		    							<tr>
-		    								<td colspan="2">
-												Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. remque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-											</td>
-		    							</tr>
-		    						</tbody>
-		    					</table>
-		    				</div>
-		    				</a>
+                                                <div class="exist-training-container">
+                                                    <div class="train-header"><h3>{{experience.organization}}</h3></div>
+                                                    <table class="table table-default table-borderless-border">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><b>Duration:</b></td>
+                                                                <td>{{experience.from_month}} {{experience.from_year}} - {{experience.to_month}} {{experience.to_year}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="padding-bottom: 0;"><b>Job Duties:</b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2">
+                                                                    {{experience.desc}}
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </a>
                                         </div>
-                                        <div class="col-sm-4">
-                                            <a data-toggle="modal" data-target="#addCompany" class="no-decoration">
-		    				<div class="exist-training-container">
-		    					<div class="train-header"><h3>Pinnacle Infotech</h3></div>
-		    					<table class="table table-default table-borderless-border">
-		    						<tbody>
-		    							<tr>
-		    								<td><b>Duration:</b></td>
-		    								<td>Jan 2017 - Dec 2017</td>
-		    							</tr>
-		    							<tr>
-		    								<td style="padding-bottom: 0;"><b>Job Duties:</b></td>
-		    							</tr>
-		    							<tr>
-		    								<td colspan="2">
-												Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. remque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-											</td>
-		    							</tr>
-		    						</tbody>
-		    					</table>
-		    				</div>
-		    				</a>
-                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>

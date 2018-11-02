@@ -26,10 +26,9 @@ urlpatterns = [
     # /trainer/newacct/
     url(r'^newacct/$', views.newacct, name='newacct'),
 
-    # /trainer/update/
-    url(r'^update/$', views.TimelineView.as_view(), name='update'),
+    # /trainer/update
+    url(r'^update/$', views.MainView.as_view(), name='update'),
 
-    url(r'^edit/$', views.MainView.as_view(), name='edit'),
-    url(r'^question/$', views.QuestionFormView.as_view(), name='question'),
-    url(r'^answer/$', views.AnswerFormView.as_view(), name='answer'),
+    url(r'^timeline/$', views.TimelineView.as_view(), name='timeline'),
+    url(r'^experience/$', views.ExperienceView.as_view(), name='experience'),
 ]

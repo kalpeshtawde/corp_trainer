@@ -52,8 +52,10 @@ class Experience(models.Model):
     # Experience model which contains trainer's past work experience
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     organization = models.CharField(max_length=200)
-    from_date = models.DateField()
-    to_date = models.DateField()
+    from_month = models.CharField(max_length=3)
+    from_year = models.IntegerField()
+    to_month = models.CharField(max_length=3)
+    to_year = models.IntegerField()
     desc = models.CharField(max_length=2000)
 
     def __str__(self):
