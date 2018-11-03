@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Count
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse_lazy
 
 from .forms import SearchForm, UserForm, TimelineForm, ExperienceForm
 from .models import Profile, Timeline, Experience
@@ -132,6 +133,12 @@ class ExperienceView(generic.View):
             return redirect('trainer:update')
         else:
             return redirect('trainer:update')
+
+
+class TimelineDelete(generic.DeleteView):
+    model = Timeline
+    success_url = reverse_lazy('trainer:update')
+
 
 def newacct(request):
     return render(request, "trainer/acct_created.html")

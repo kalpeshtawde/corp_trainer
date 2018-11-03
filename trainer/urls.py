@@ -12,7 +12,7 @@ urlpatterns = [
 
     # /trainer/login/
     url(r'^login/$', login, {'template_name': 'trainer/login.html', 'authentication_form': LoginForm}, name='login'),
-    url(r'^logout/$', logout, {'template_name': 'trainer/registration_form.html'}, name='logout'),
+    url(r'^logout/$', logout, {'template_name': 'trainer/login.html'}, name='logout'),
 
     # /trainer/listing/
     url(r'^listing/$', views.ListingView.as_view(), name='listing'),
@@ -31,4 +31,8 @@ urlpatterns = [
 
     url(r'^timeline/$', views.TimelineView.as_view(), name='timeline'),
     url(r'^experience/$', views.ExperienceView.as_view(), name='experience'),
+
+    # /trainer/update/123/delete
+    url(r'^update/(?P<pk>[0-9]+)/delete/$', views.TimelineDelete.as_view(), name='timeline-delete'),
+
 ]
