@@ -853,6 +853,7 @@ input.flat-control:focus {
     font-size: 20px;
     color: #023436;
     margin-top: 10px;
+    display: inline-block;
 }
 
 a.no-decoration {

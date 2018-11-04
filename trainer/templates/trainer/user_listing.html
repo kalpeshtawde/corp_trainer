@@ -3,86 +3,93 @@
 
 {% block body %}
 <div class="container">
-  <div class="middle-section">
-  <div class="search-result-header">
-	{% if request.GET.search %}
-	  <h4>Showing <strong>{{count}}</strong> results for <strong>{{ request.GET.search }}</strong></h4>
-	{% endif %}
-  	<div class="pull-right dropdown-cntnr">
-  		<div class="dropdown">
-		  <button class="btn btn-default dropdown-toggle white-drop" type="button" data-toggle="dropdown"><span id="selected">Sort by:</span>
-		  <span class="caret"> </span>
-		</button>
-		  <ul class="dropdown-menu">
-		    <li><a href="#">Highest Rated</a></li>
-		    <li><a href="#">Most Hours</a></li>
-		  </ul>
-		</div>
-  	</div>
-  </div>
-  <div class="profile-listing">
-  	<ul type="none">
-		{% for profile in object_list %}
-  			<li class="profile-result">
-  			<a href={% url 'trainer:detail' profile.id %}>
-  				<div class="table-responsive">
-  				<table class="table table-default table-borderless-border">
-  				<tr>
-  					<td rowspan= "2" width="140px">
-  						<div class="result-pic" style="background-image: url({{profile.photo.url}});"></div>
-  					</td>
-  					<td>
-  						<div class="heading-text name-section">
-							<h3>{{profile.user.first_name}} {{profile.user.last_name}}</h3>
-							<h5><i class="icon-person_pin_circle"></i> {{profile.country}}</h5>
-						</div>
-  					</td>
-  					<td class="text-center">
-  						<div class="hours-training">
-							<h5>TOTAL HOURS OF TRAINING</h5>
-							<h4>185 Hrs.</h4>
-						</div>
-  					</td>
-  					<td class="text-right">
-  						<div class="ratings absolute-ratings">
-				<ul class="star-container" type="none">
-                		<li><i class="icon-star star-filled"></i></li><li><i class="icon-star star-filled"></i></li><li><i class="icon-star star-filled"></i></li><li><i class="icon-star star-filled"></i></li><li><i class="icon-star"></i></li>
-                	</ul>
+    <div class="middle-section">
+        <div class="search-result-header">
+            {% if request.GET.search %}
+            <h4>Showing <strong>{{count}}</strong> results for <strong>{{ request.GET.search }}</strong></h4>
+            {% endif %}
+            <div class="pull-right dropdown-cntnr">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle white-drop" type="button" data-toggle="dropdown"><span id="selected">Sort by:</span>
+                        <span class="caret"> </span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Highest Rated</a></li>
+                        <li><a href="#">Most Hours</a></li>
+                    </ul>
                 </div>
-  					</td>
-  				</tr>
-  				<tr>
-  					<td colspan="2">
-  						<div class="table-skills">
-							<h5>TOP SKILLS</h5>
-							<div class="table-skill-listing">Branding  |  UX Designing  |  UI Designing  |  HTML  |  Web Development  |  Public Speaking and more..   </div>
-						</div>
-  					</td>
-  					<td class="text-right">
-  						<button class="btn btn-message">
-			    			<i class="icon-chat_bubble"></i>&nbsp; Send Message
-			    		</button>
-			    	</td>
-  				</tr>
-  			</table>
-  		</div>
-  		</a>
-  		</li>
-		{% endfor %}
-  	</ul>
-  </div>
-  <div class="text-right">
-	<ul class="pagination corp-pagination">
-    <li><a href="#">←</a></li>
-    <li><a href="#">1</a></li>
-    <li class="active"><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">→</a></li>
-  </ul>
-</div>
-</div>
-
+            </div>
+        </div>
+        <div class="profile-listing">
+            <ul type="none">
+                {% for profile in object_list %}
+                <li class="profile-result">
+                    <a href={% url 'trainer:detail' profile.id %}>
+                    <div class="table-responsive">
+                        <table class="table table-default table-borderless-border">
+                            <tr>
+                                <td rowspan="2" width="140px">
+                                    <div class="result-pic" style="background-image: url({{profile.photo.url}});"></div>
+                                </td>
+                                <td>
+                                    <div class="heading-text name-section">
+                                        <h3>{{profile.user.first_name}} {{profile.user.last_name}}</h3>
+                                        <!-- <h5><i class="icon-person_pin_circle"></i> {{profile.country}}</h5> -->
+                                        <div class="table-skills">
+                                            <h5>LOCATIONS AVAILABLE</h5>
+                                            <div class="table-skill-listing">Mumbai, Delhi, Pune</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <div class="hours-training">
+                                        <h5>TOTAL HOURS OF TRAINING</h5>
+                                        <h4>185 Hrs.</h4>
+                                    </div>
+                                </td>
+                                <td class="text-right">
+                                    <div class="ratings absolute-ratings">
+                                        <ul class="star-container" type="none">
+                                            <li><i class="icon-star star-filled"></i></li>
+                                            <li><i class="icon-star star-filled"></i></li>
+                                            <li><i class="icon-star star-filled"></i></li>
+                                            <li><i class="icon-star star-filled"></i></li>
+                                            <li><i class="icon-star"></i></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="table-skills">
+                                    <h5>TOP SKILLS</h5>
+                                    <div class="table-skill-listing">Branding | UX Designing | UI Designing | HTML | Web Development | Public Speaking and more..</div>
+                    </div>
+                    </td>
+                    <td class="text-right">
+                        <button class="btn btn-message" data-toggle="modal" data-target="#message-modal">
+                            <i class="icon-chat_bubble"></i>&nbsp; Send Message
+                        </button>
+                    </td>
+                    </tr>
+                    </table>
+                    </div>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="text-right">
+            <ul class="pagination corp-pagination">
+                <li><a href="#">←</a></li>
+                <li><a href="#">1</a></li>
+                <li class="active"><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">→</a></li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

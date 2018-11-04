@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Messages</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/corporate.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+  <style type="text/css">
+    .message-heading{
+      background-color: #fff !important;
+    padding: 18px 24px;
+    border-top: 1px solid #e0e0e0;
+    }
+    .message-heading.unread{
+      background-color: #e4e4e4 !important; 
+    }
+    .message-time{
+    	font-size: 12px;
+    	color: #333;
+    }
+    .message-heading h5 {
+    color: #02715b;
+    font-weight: 600;
+    font-size: 16px;
+}
+a.message-subject{
+	width: 50%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    float: left;
+}
+    ul.message-listing li{
+      margin-bottom: 10px;
+    }
+    ul.message-listing li b{
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-default header-section navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <div class="navbar-brand logo-cntnr"><img src="img/logo.png" class="img-responsive"></div>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right navbar-menu ">
+        <li>
+			<div class="form-group">
+				<input type="text" name="" placeholder="Search" class="form-control searchbox">
+				<span class="search-btn"><i class="icon-search"></i></span>
+			</div>
+        </li>
+        <li><a href="#"><span class="icon-notifications"><div class="badge">5</div></span></a></li>
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        	<div class="user-pic" style="background: url(img/user.jpg) center no-repeat;"></div>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Setting</a></li>
+          <li><a href="#">Logout</a></li>
+        </ul>
+      	</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="middle-section">
+  <div class="search-result-header">
+  	<h4>2 Unread Messages</h4>
+  	<div class="pull-right dropdown-cntnr">
+  		<div class="dropdown">
+		  <button class="btn btn-default dropdown-toggle white-drop" type="button" data-toggle="dropdown"><span id="selected">Sort by:</span> 
+		  <span class="caret"> </span>
+		</button>
+		  <ul class="dropdown-menu">
+		    <li><a href="#">Newest</a></li>
+		    <li><a href="#">Oldest</a></li>
+		  </ul>
+		</div>
+  	</div>
+  </div>
+  <div class="profile-listing">
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading message-heading unread">
+          <h5 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="message-subject">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit</a>
+            <span class="pull-right message-time">
+            	Nov 30, 2018, 11:18 AM
+            </span>
+            <div class="clearfix"></div>
+          </h5>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse">
+          <div class="panel-body">
+            <ul type="none" class="message-listing">
+              <li>
+                 <b>Message:</b>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat.                 
+              </li>
+              <li>
+                <div class="row">
+                  <div class="col-sm-4 m-b-lg">
+                     <b>Contact Number:</b>
+                    +91 5479855541
+                  </div>
+                  <div class="col-sm-4 m-b-lg">
+                    <b>Email:</b>
+                    chrisbrown@gmail.com
+                  </div>
+                </div>
+              </li>
+              
+            </ul>
+            
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading message-heading unread">
+          <h5 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" class="message-subject">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit</a>
+            <span class="pull-right message-time">
+            	Nov 30, 2018, 11:18 AM
+            </span>
+            <div class="clearfix"></div>
+          </h5>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse">
+          <div class="panel-body">
+            <ul type="none" class="message-listing">
+              <li>
+                 <b>Message:</b>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat.                 
+              </li>
+              <li>
+                <div class="row">
+                  <div class="col-sm-4 m-b-lg">
+                     <b>Contact Number:</b>
+                    +91 5479855541
+                  </div>
+                  <div class="col-sm-4 m-b-lg">
+                    <b>Email:</b>
+                    chrisbrown@gmail.com
+                  </div>
+                </div>
+              </li>
+              
+            </ul>
+            
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading message-heading">
+          <h5 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" class="message-subject">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit</a>
+            <span class="pull-right message-time">
+            	Nov 30, 2018, 11:18 AM
+            </span>
+            <div class="clearfix"></div>
+          </h5>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse">
+          <div class="panel-body">
+            <ul type="none" class="message-listing">
+              <li>
+                 <b>Message:</b>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat.                 
+              </li>
+              <li>
+                <div class="row">
+                  <div class="col-sm-4 m-b-lg">
+                     <b>Contact Number:</b>
+                    +91 5479855541
+                  </div>
+                  <div class="col-sm-4 m-b-lg">
+                    <b>Email:</b>
+                    chrisbrown@gmail.com
+                  </div>
+                </div>
+              </li>
+              
+            </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</body>
+
+<!---- All Scripts ---->
+	<script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+		$(document).ready(function(){
+		    $('.dropdown-menu a').click(function(){
+		    $('#selected').text($(this).text());
+		  });
+		});     
+</script>
+</html>

@@ -49,17 +49,18 @@ class DetailView(generic.DetailView):
     model = Profile
     template_name = 'trainer/detail.html'
 
-    def get_queryset(self):
-        queryset = super(DetailView, self).get_queryset()
-        queryset = queryset.prefetch_related('user')
+    # def get_queryset(self):
+    #     queryset = super(DetailView, self).get_queryset()
+    #     queryset = queryset.prefetch_related('user')
+    #
+    #     return queryset
 
-        return queryset
-
-    # def get_context_data(self, **kwargs):
-    #     context = super(DetailView, self).get_context_data(**kwargs)
-    #     context['search'] = self.request.GET.get('search', 'give-default-value')
-    #     context['form'] = SearchForm()
-    #     return context
+    def get_context_data(self, **kwargs):
+        context = super(DetailView, self).get_context_data(**kwargs)
+        detail_user = Profile.objects.filter(pk=self.kwargs['pk'])[0].user
+        context['detail_timeline'] = Timeline.objects.filter(user=detail_user)
+        context['detail_experience'] = Experience.objects.filter(user=detail_user)
+        return context
 
 
 class UserFormView(generic.View):

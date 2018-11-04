@@ -51,7 +51,7 @@
                         {{profile.country}}</small></h3>
                     <h5>Corporate Trainer</h5>
                 </div>
-                <button class="btn btn-message">
+                <button class="btn btn-message"  data-toggle="modal" data-target="#message-modal">
                     <i class="icon-chat_bubble"></i>&nbsp; Send Message
                 </button>
             </div>
@@ -70,7 +70,7 @@
                     <div class="info-sections">
                         <h4>RECENT TRAININGS</h4>
                         <div class="row">
-                            {% for tl in profile.timeline_set.all %}
+                            {% for tl in detail_timeline %}
                             <div class="timeline-centered">
                                 <article class="timeline-entry">
 
@@ -120,18 +120,13 @@
                   <div id="work" class="tab-pane fade">
                     <div class="info-sections">
                         <h4>WORK EXPERIENCE</h4>
-                        <div class="work-container">
-                            <h5>Pinnacle Infotech</h5>
-                            <small>Jan 2017 - Dec 2017</small>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. remque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        {% for ex in detail_experience %}
+                            <div class="work-container">
+                            <h5>{{ex.organization}}</h5>
+                            <small>{{ex.from_month}} {{ex.from_year}} - {{ex.to_month}} {{ex.to_year}}</small>
+                            <p>{{ex.desc}}</p>
                         </div>
-                        <div class="work-container">
-                            <h5>Pinnacle Infotech</h5>
-                            <small>Jan 2017 - Dec 2017</small>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. remque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                        </div>
+                        {% endfor %}
                     </div>
                   </div>
 
