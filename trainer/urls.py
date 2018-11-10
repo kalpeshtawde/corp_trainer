@@ -1,5 +1,6 @@
 from django.conf.urls import url
-from django.contrib.auth.views import login, logout
+from django.contrib.auth import login, logout
+from django.contrib.auth.views import LoginView, LogoutView
 from . import views
 from .forms import LoginForm
 
@@ -11,8 +12,8 @@ urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
 
     # /trainer/login/
-    url(r'^login/$', login, {'template_name': 'trainer/login.html', 'authentication_form': LoginForm}, name='login'),
-    url(r'^logout/$', logout, {'template_name': 'trainer/login.html'}, name='logout'),
+    url(r'^login/$', LoginView.as_view(template_name='trainer/login.html', authentication_form=LoginForm), name='login'),
+    url(r'^logout/$', LogoutView.as_view(template_name='trainer/login.html'), name='logout'),
 
     # /trainer/listing/
     url(r'^listing/$', views.ListingView.as_view(), name='listing'),
