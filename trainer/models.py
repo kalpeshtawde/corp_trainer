@@ -62,5 +62,13 @@ class Experience(models.Model):
         return self.organization
 
 
+class Message(models.Model):
+    # Message model which contains messages sent to trainer by requester
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    message = models.CharField(max_length=1000)
+    phone = models.CharField(max_length=20)
+    email = models.EmailField()
+    read = models.BooleanField()
 
-
+    def __str__(self):
+        return self.phone + " " + str(self.email)

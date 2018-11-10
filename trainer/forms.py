@@ -5,7 +5,7 @@ from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
 
-from .models import Timeline, Experience
+from .models import *
 
 
 class LoginForm(AuthenticationForm):
@@ -233,9 +233,32 @@ class ExperienceForm(forms.ModelForm):
         }
 
 
-class QuestionForm(forms.Form):
-    pass
+class MessageForm(forms.ModelForm):
 
+    class Meta:
+        model = Message
+        fields = ['message', 'phone', 'email']
 
-class AnswerForm(forms.Form):
-    pass
+        # widgets = {
+        #     'message': forms.Textarea(
+        #         attrs={
+        #             'class': "form-control",
+        #             'placeholder': 'Provide requirement details like type of training, skills, location, number of days, number of attendants',
+        #             'rows': 5,
+        #         },
+        #     ),
+        #     'phone': forms.CharField(
+        #         attrs={
+        #             'class': 'form-control',
+        #             'type': 'text',
+        #
+        #         }
+        #     ),
+        #     'email': forms.CharField(
+        #         attrs={
+        #             'class': 'form-control',
+        #             'type': 'email',
+        #
+        #         }
+        #     )
+        # }

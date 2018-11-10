@@ -5,8 +5,8 @@ from django.db.models import Q, Count
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse_lazy
 
-from .forms import SearchForm, UserForm, TimelineForm, ExperienceForm
-from .models import Profile, Timeline, Experience
+from .forms import *
+from .models import *
 
 
 class IndexView(generic.ListView):
@@ -48,12 +48,6 @@ class ListingView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Profile
     template_name = 'trainer/detail.html'
-
-    # def get_queryset(self):
-    #     queryset = super(DetailView, self).get_queryset()
-    #     queryset = queryset.prefetch_related('user')
-    #
-    #     return queryset
 
     def get_context_data(self, **kwargs):
         context = super(DetailView, self).get_context_data(**kwargs)
@@ -116,6 +110,21 @@ class TimelineView(generic.View):
             timeline.user = request.user
             timeline.save()
             return redirect('trainer:update')
+
+
+class MessageView(generic.View):
+    form_class = MessageForm
+    model = Message
+    template_name = 'trainer/detail.html'
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+
+        if form.is_valid():
+            timeline = form.save(commit=False)
+            timeline.user = request.user
+            timeline.save()
+            return redirect('trainer:detail')
 
 
 class ExperienceView(generic.View):
