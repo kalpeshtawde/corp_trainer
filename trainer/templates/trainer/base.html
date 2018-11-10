@@ -7,12 +7,18 @@
 <head>
 {% include 'trainer/header.html' %}
 </head>
-
 <body>
-{% include 'trainer/navbar.html' %}
+{% if request.path != "/trainer/" %}
+    {% include 'trainer/navbar.html' %}
+{% endif %}
 {% block body %}
 {% endblock %}
 {% include 'trainer/footer.html' %}
+{% if request.path == "/trainer/" %}
+                <a class="btn btn-default sticky-btn smooth" href="#home">
+  <i class="fa fa-chevron-up"></i>
+</a>
+{% endif %}
 </body>
 {% include 'trainer/script.html' %}
 </html>

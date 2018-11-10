@@ -9,7 +9,7 @@ from .forms import *
 from .models import *
 
 
-class IndexView(generic.ListView):
+class IndexView(generic.TemplateView):
     template_name = 'trainer/index.html'
 
 
