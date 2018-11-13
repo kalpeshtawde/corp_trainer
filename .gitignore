@@ -1,4 +1,4 @@
 .idea*
 *.pyc
-*settings.py
 *.log
+corp_trainer/settings.py
