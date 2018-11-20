@@ -2,11 +2,13 @@ from django.views import generic
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Count
-from django.contrib.auth.models import User
 from django.urls import reverse_lazy
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 from .forms import *
 from .models import *
+from .serializers import *
 
 
 class IndexView(generic.TemplateView):
@@ -127,6 +129,13 @@ class MessageView(generic.View):
             return redirect('trainer:detail')
 
 
+class MessageAPIView(APIView):
+    def get(self, request):
+        message = Message.objects.all()
+        serializer = MessageSerializer(message, many=True)
+        return Response(serializer.data)
+
+
 class ExperienceView(generic.View):
     form_class = ExperienceForm
     model = Experience
@@ -157,3 +166,5 @@ def newacct(request):
 def update(request):
     return render(request, "trainer/edit_profile.html")
 
+def test(request):
+    return render(request, "trainer/test.html")
