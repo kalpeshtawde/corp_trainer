@@ -1,0 +1,67 @@
+{% extends 'trainer/base.html' %}
+{% load static %}
+
+{% block body %}
+<div class="container" ng-app="message" ng-controller="messageController">
+  <div class="middle-section">
+  <div class="search-result-header">
+  	<h4>2 Unread Messages</h4>
+  	<div class="pull-right dropdown-cntnr">
+  		<div class="dropdown">
+		  <button class="btn btn-default dropdown-toggle white-drop" type="button" data-toggle="dropdown"><span id="selected">Sort by:</span> 
+		  <span class="caret"> </span>
+		</button>
+		  <ul class="dropdown-menu">
+		    <li><a href="#">Newest</a></li>
+		    <li><a href="#">Oldest</a></li>
+		  </ul>
+		</div>
+  	</div>
+  </div>
+
+  <div ng-repeat="msg in messageList">
+  <div class="profile-listing">
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading message-heading unread">
+          <h5 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="message-subject">
+            <span ng-bind="msg.msgText"></span>
+            </a>
+            <span class="pull-right message-time">
+            	Nov 30, 2018, 11:18 AM
+            </span>
+            <div class="clearfix"></div>
+          </h5>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse">
+          <div class="panel-body">
+            <ul type="none" class="message-listing">
+              <li>
+                 <b>Message:</b><span ng-bind="msg.msgText">
+              </li>
+              <li>
+                <div class="row">
+                  <div class="col-sm-4 m-b-lg">
+                     <b>Contact Number:</b>
+                    <span ng-bind="msg.msgPhone">
+                  </div>
+                  <div class="col-sm-4 m-b-lg">
+                    <b>Email:</b>
+                    <span ng-bind="msg.msgEmail">
+                  </div>
+                </div>
+              </li>
+              
+            </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+</div>
+{% endblock %}

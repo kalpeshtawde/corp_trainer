@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,14 +8,18 @@
 </head>
 <body ng-app="message" ng-controller="messageController">
     <strong>Angular</strong>
-    <form ng-submit="readMessage()">
+    <form ng-submit="messageAdd()">
         <input type="text" ng-model="inputMessage" placeholder="Type your message here">
         <input type="submit" value="Submit">
     </form>
     <br>
     <div ng-repeat="msg in messageList">
-        <span ng-bind="msg.msgText"></span>
+        <input type="checkbox" ng-model="msg.done"><span ng-bind="msg.msgText"></span>
     </div>
+    <p>
+    <button ng-click="remove()">Done</button>
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+    <script src="{% static 'trainer/js/message.js' %}"></script>
 </body>
 </html>

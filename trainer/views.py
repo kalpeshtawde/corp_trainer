@@ -166,5 +166,5 @@ def newacct(request):
 def update(request):
     return render(request, "trainer/edit_profile.html")
 
-def test(request):
-    return render(request, "trainer/test.html")
+def inbox(request):
+    return render(request, "trainer/inbox.html")

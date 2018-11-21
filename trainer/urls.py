@@ -27,6 +27,9 @@ urlpatterns = [
     # /trainer/newacct/
     url(r'^newacct/$', views.newacct, name='newacct'),
 
+    # /trainer/inbox
+    url(r'^inbox/$', views.inbox, name='inbox'),
+
     # /trainer/update
     url(r'^update/$', views.MainView.as_view(), name='update'),
 
@@ -38,10 +41,5 @@ urlpatterns = [
 
     # Rest framework urls
     url(r'^api/message', views.MessageAPIView.as_view()),
-
-
-
-    # /trainer/test
-    url(r'^test/$', views.test, name='test'),
 
 ]
