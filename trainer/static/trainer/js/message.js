@@ -5,7 +5,7 @@ app.controller('messageController', function($scope, $http) {
     $http.get('/trainer/api/message/').then(function(response) {
         $scope.messageList = response.data
         $scope.messageList = []
-        for (var i= 0; i <= response.data.length; i++) {
+        for (var i= 0; i < response.data.length; i++) {
             var message = {};
             message.msgText = response.data[i].message
             message.msgPhone = response.data[i].phone
