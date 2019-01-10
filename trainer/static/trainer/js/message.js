@@ -7,12 +7,14 @@ app.controller('messageController', function($scope, $http) {
         $scope.messageList = []
         for (var i= 0; i < response.data.length; i++) {
             var message = {};
-            message.msgId = response.data[i].id
-            message.msgText = response.data[i].message
-            message.msgPhone = response.data[i].phone
-            message.msgEmail = response.data[i].email
-            $scope.messageList.push(message)
+            message.msgId = '#collapse' + i;
+            message.msgText = response.data[i].message;
+            message.msgPhone = response.data[i].phone;
+            message.msgEmail = response.data[i].email;
+            message.msgDateTime = response.data[i].dttime;
+            $scope.messageList.push(message);
         }
+        $scope.name='Kalpesh';
     })
 
     $scope.messageAdd = function() {

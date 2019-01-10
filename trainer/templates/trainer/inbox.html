@@ -29,7 +29,7 @@
             <span ng-bind="msg.msgText"></span>
             </a>
             <span class="pull-right message-time">
-            	Nov 30, 2018, 11:18 AM
+            	{{msg.msgDateTime}}
             </span>
             <div class="clearfix"></div>
           </h5>
@@ -39,6 +39,7 @@
             <ul type="none" class="message-listing">
               <li>
                  <b>Message:</b><span ng-bind="msg.msgText">
+                 {{msg.msgText}}
               </li>
               <li>
                 <div class="row">
