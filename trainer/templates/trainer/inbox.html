@@ -12,14 +12,14 @@
 		  <span class="caret"> </span>
 		</button>
 		  <ul class="dropdown-menu">
-		    <li><a href="#">Newest</a></li>
-		    <li><a href="#">Oldest</a></li>
+		    <li><a ng-click="sortMessage(1)">Newest</a></li>
+		    <li><a ng-click="sortMessage(0)">Oldest</a></li>
 		  </ul>
 		</div>
   	</div>
   </div>
 
-  <div ng-repeat="msg in messageList">
+  <div ng-repeat="msg in messageList | orderBy : '{{}}'">
   <div class="profile-listing">
     <div class="panel-group" id="accordion">
       <div class="panel panel-default">

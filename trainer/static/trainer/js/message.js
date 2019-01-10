@@ -2,6 +2,7 @@ var app = angular.module('message', []);
 
 app.controller('messageController', function($scope, $http) {
     //$scope.messageList = [{msgText: 'Finish this app', done: false}];
+
     $http.get('/trainer/api/message/').then(function(response) {
         $scope.messageList = response.data
         $scope.messageList = []
@@ -14,8 +15,13 @@ app.controller('messageController', function($scope, $http) {
             message.msgDateTime = response.data[i].dttime;
             $scope.messageList.push(message);
         }
-        $scope.name='Kalpesh';
+        $scope.byOrder = 'msgDateTime';
     })
+
+    $scope.sortMessage = function(order) {
+        console.log(order);
+        $scope.byOrder = '-msgDateTime';
+    };
 
     $scope.messageAdd = function() {
         $scope.messageList.push({msgText: $scope.inputMessage, done: false});
@@ -28,8 +34,8 @@ app.controller('messageController', function($scope, $http) {
         angular.forEach(oldList, function(x){
             if (!x.done) {
             $scope.messageList.push(x);
-            }
+            };
         })
-    }
+    };
 
-})
+});
