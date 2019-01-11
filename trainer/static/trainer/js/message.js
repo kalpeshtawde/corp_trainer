@@ -4,7 +4,7 @@ var app = angular.module('message', [], function($interpolateProvider) {
     $interpolateProvider.endSymbol(']]');
 });
 
-app.controller('messageController', function($scope, $http) {
+app.controller('messageController', function($scope, $http, $filter) {
     //$scope.messageList = [{msgText: 'Finish this app', done: false}];
 
     $http.get('/trainer/api/message/').then(function(response) {
@@ -23,8 +23,11 @@ app.controller('messageController', function($scope, $http) {
     })
 
     $scope.sortMessage = function(order) {
-        console.log(order);
-        $scope.byOrder = '-msgDateTime';
+        if (order == 1) {
+            $scope.messageList = $filter('orderBy')($scope.messageList, '-msgDateTime')
+        } else {
+            $scope.messageList = $filter('orderBy')($scope.messageList, 'msgDateTime')
+        }
     };
 
     $scope.messageAdd = function() {
