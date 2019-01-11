@@ -1,5 +1,7 @@
-var app = angular.module('message', []);
-
+var app = angular.module('message', [], function($interpolateProvider) {
+    $interpolateProvider.startSymbol('[[');
+    $interpolateProvider.endSymbol(']]');
+});
 app.controller('messageController', function($scope, $http) {
     //$scope.messageList = [{msgText: 'Finish this app', done: false}];
 

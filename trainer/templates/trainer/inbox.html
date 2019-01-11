@@ -19,17 +19,18 @@
   	</div>
   </div>
 
-  <div ng-repeat="msg in messageList | orderBy : '{{}}'">
+  <div ng-repeat="msg in messageList track by $index">
   <div class="profile-listing">
     <div class="panel-group" id="accordion">
       <div class="panel panel-default">
         <div class="panel-heading message-heading unread">
           <h5 class="panel-title">
+              [[msg.msgText]]
             <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="message-subject">
-            <span ng-bind="msg.msgText"></span>
+
             </a>
-            <span class="pull-right message-time">
-            	{{msg.msgDateTime}}
+            <span  ng-bind="msg.msgText" class="pull-right message-time">
+
             </span>
             <div class="clearfix"></div>
           </h5>
