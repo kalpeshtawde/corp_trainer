@@ -12,7 +12,7 @@ app.controller('messageController', function($scope, $http) {
         $scope.messageList = []
         for (var i= 0; i < response.data.length; i++) {
             var message = {};
-            message.msgId = '#collapse' + i;
+            message.msgId = 'collapse' + i;
             message.msgText = response.data[i].message;
             message.msgPhone = response.data[i].phone;
             message.msgEmail = response.data[i].email;

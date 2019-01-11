@@ -25,16 +25,16 @@
       <div class="panel panel-default">
         <div class="panel-heading message-heading unread">
           <h5 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="message-subject">
+            <a data-toggle="collapse" data-parent="#accordion" href="[['#'+msg.msgId]]" class="message-subject">
             <span ng-bind="msg.msgText"></span>
             </a>
             <span class="pull-right message-time">
-            	{{msg.msgDateTime}}
+            	[[msg.msgDateTime]]
             </span>
             <div class="clearfix"></div>
           </h5>
         </div>
-        <div id="collapse1" class="panel-collapse collapse">
+        <div id="[[msg.msgId]]" class="panel-collapse collapse">
           <div class="panel-body">
             <ul type="none" class="message-listing">
               <li>
