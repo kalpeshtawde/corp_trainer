@@ -22,6 +22,18 @@ app.controller('messageController', function($scope, $http, $filter) {
         $scope.byOrder = 'msgDateTime';
     })
 
+    $scope.sendMsg = function() {
+        var data = {
+        "profile": 1,
+        "message": "Hi Kalpesh, Can you conduct some training at our place?",
+        "phone": "9619740000",
+        "email": "trupti@outlook.com",
+        "read": false,
+        "dttime": "2019-01-10T15:03:50.683434Z"
+        }
+        $http.put('/trainer/api/message/', data)
+    }
+
     $scope.sortMessage = function(order) {
         if (order == 1) {
             $scope.messageList = $filter('orderBy')($scope.messageList, '-msgDateTime')

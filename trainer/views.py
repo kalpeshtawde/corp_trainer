@@ -5,6 +5,10 @@ from django.db.models import Q, Count
 from django.urls import reverse_lazy
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import status
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+
 
 from .forms import *
 from .models import *
@@ -129,13 +133,6 @@ class MessageView(generic.View):
             return redirect('trainer:detail')
 
 
-class MessageAPIView(APIView):
-    def get(self, request):
-        message = Message.objects.all()
-        serializer = MessageSerializer(message, many=True)
-        return Response(serializer.data)
-
-
 class ExperienceView(generic.View):
     form_class = ExperienceForm
     model = Experience
@@ -168,3 +165,30 @@ def update(request):
 
 def inbox(request):
     return render(request, "trainer/inbox.html")
+
+
+######## Rest Framework ###############
+
+## To avoid the CSRF Token missing or incorrect issue
+## https://www.cnblogs.com/AmilyWilly/p/6438448.html
+class CsrfExemptSessionAuthentication(SessionAuthentication):
+    def enforce_csrf(self, request):
+        return
+
+
+class MessageAPIView(APIView):
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+    def get(self, request):
+        message = Message.objects.all()
+        serializer = MessageSerializer(message, many=True)
+        return Response(serializer.data)
+
+    def put(self, request):
+        serializer = MessageSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
