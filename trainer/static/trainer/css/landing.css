@@ -23,6 +23,10 @@
     outline: none;
 }
 
+.banner-image{
+    padding: 5% 0;
+}
+
 .stick-right {
     position: absolute;
     right: 0;

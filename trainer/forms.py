@@ -233,32 +233,54 @@ class ExperienceForm(forms.ModelForm):
         }
 
 
-class MessageForm(forms.ModelForm):
+class MessageForm(forms.Form):
 
-    class Meta:
-        model = Message
-        fields = ['message', 'phone', 'email']
+    message = forms.CharField(
+        max_length=500,
+        widget=forms.Textarea(
+            attrs={
+                'class': "form-control",
+                'rows': 5,
+                'placeholder': "Provide requirement details like type of training, skills, location, number of days, number of attendants"
+            }
+        ),
+        required=False
+    )
 
-        # widgets = {
-        #     'message': forms.Textarea(
-        #         attrs={
-        #             'class': "form-control",
-        #             'placeholder': 'Provide requirement details like type of training, skills, location, number of days, number of attendants',
-        #             'rows': 5,
-        #         },
-        #     ),
-        #     'phone': forms.CharField(
-        #         attrs={
-        #             'class': 'form-control',
-        #             'type': 'text',
-        #
-        #         }
-        #     ),
-        #     'email': forms.CharField(
-        #         attrs={
-        #             'class': 'form-control',
-        #             'type': 'email',
-        #
-        #         }
-        #     )
-        # }
+    phone = forms.CharField(
+        max_length=50,
+        widget=forms.TextInput(
+            attrs={
+                'class': "form-control",
+            }
+        ),
+        required=False
+    )
+
+    email = forms.EmailField(
+        max_length=200,
+        widget=forms.TextInput(
+            attrs={
+                'class': "form-control",
+            }
+        ),
+        required=False
+    )
+
+    def clean_message(self, *args, **kwargs):
+        message = self.cleaned_data.get('message')
+        if not message:
+            raise forms.ValidationError("Please enter Message")
+        return message
+    
+    def clean_phone(self, *args, **kwargs):
+        phone = self.cleaned_data.get('phone')
+        if not phone:
+            raise forms.ValidationError("Please enter phone")
+        return phone
+
+    def clean_email(self, *args, **kwargs):
+        email = self.cleaned_data.get('email')
+        if not re.match(r'.+@.+\..+', email):
+            raise forms.ValidationError("Invalid email id")
+        return email

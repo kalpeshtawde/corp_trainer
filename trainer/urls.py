@@ -30,6 +30,9 @@ urlpatterns = [
     # /trainer/inbox
     url(r'^inbox/$', views.inbox, name='inbox'),
 
+    # /trainer/message
+    url(r'^message/$', views.message, name='message'),
+
     # /trainer/update
     url(r'^update/$', views.MainView.as_view(), name='update'),
 
@@ -40,6 +43,6 @@ urlpatterns = [
     url(r'^update/(?P<pk>[0-9]+)/delete/$', views.TimelineDelete.as_view(), name='timeline-delete'),
 
     # Rest framework urls
-    url(r'^api/message', views.MessageAPIView.as_view()),
+    url(r'^api/message', views.MessageAPIView.as_view(), name='api_message'),
 
 ]

@@ -1,336 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>User Profile</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/corporate.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <title>User Profile</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/corporate.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
 </head>
 <body>
 
 <nav class="navbar navbar-default header-section navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
-      </button>
-      <div class="navbar-brand logo-cntnr"><img src="img/logo.png" class="img-responsive"></div>
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand logo-cntnr"><img src="img/logo.png" class="img-responsive"></div>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right navbar-menu ">
+                <li>
+                    <div class="form-group">
+                        <input type="text" name="" placeholder="Search" class="form-control searchbox">
+                        <span class="search-btn"><i class="icon-search"></i></span>
+                    </div>
+                </li>
+                <li><a href="#"><span class="icon-notifications"><div class="badge">5</div></span></a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <div class="user-pic" style="background: url(img/user.jpg) center no-repeat;"></div>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Setting</a></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right navbar-menu ">
-        <li>
-			<div class="form-group">
-				<input type="text" name="" placeholder="Search" class="form-control searchbox">
-				<span class="search-btn"><i class="icon-search"></i></span>
-			</div>
-        </li>
-        <li><a href="#"><span class="icon-notifications"><div class="badge">5</div></span></a></li>
-        <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-        	<div class="user-pic" style="background: url(img/user.jpg) center no-repeat;"></div>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Setting</a></li>
-          <li><a href="#">Logout</a></li>
-        </ul>
-      	</li>
-      </ul>
-    </div>
-  </div>
 </nav>
 
 <div class="container">
-  <div class="row">
-<!------------------------Left Sidebar-------------------->
-    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 sticky">
-      <div class="left-panel">
+    <div class="row">
+        <!------------------------Left Sidebar-------------------->
+        <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 sticky">
+            <div class="left-panel">
 
-        <div class="upper-user-details">
-          <div class="main-pic" style="background-image: url(img/main.png);"></div>
-        </div>
-        <div class="skill-table">
-        	<table class="table table-default">
-        		<thead>
-        			<tr>
-        				<th>SKILLS</th>
-        				<th class="text-right"><small>(Hrs of Training given)</small></th>
-        			</tr>
-        		</thead>
-        		<tbody>
-        			<tr>
-        				<td class="skill">Branding</td>
-        				<td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
-        			</tr>
-        			<tr>
-        				<td class="skill">UX Designing</td>
-        				<td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
-        			</tr>
-        			<tr>
-        				<td class="skill">Branding</td>
-        				<td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
-        			</tr>
-        			<tr>
-        				<td class="skill">UX Designing</td>
-        				<td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
-        			</tr>
-        			<tr>
-        				<td class="skill">Branding</td>
-        				<td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
-        			</tr>
-        			<tr>
-        				<td class="skill">UX Designing</td>
-        				<td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
-        			</tr>
-        		</tbody>
-        	</table>
-        	<div class="text-right more-skills">
-        		<a href="" data-toggle="modal" data-target="#allSkills">+ 24 Skills</a>
-        	</div>
-        </div>
-
-      </div>
-    </div>
-
-    <!------------------------Mid Section-------------------->
-    <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
-        <div class="middle-section">
-          	<div class="ratings pull-right">
-                	<h5>RATINGS</h5>
-                	<ul class="star-container" type="none">
-                		<li><i class="icon-star star-filled"></i></li><li><i class="icon-star star-filled"></i></li><li><i class="icon-star star-filled"></i></li><li><i class="icon-star star-filled"></i></li><li><i class="icon-star"></i></li>
-                	</ul>
+                <div class="upper-user-details">
+                    <div class="main-pic" style="background-image: url(img/main.png);"></div>
                 </div>
-            <div class="heading-text">
-                <h3>Michael William <small><i class="icon-person_pin_circle"></i> Miami, FL</small></h3>
-                <h5>Corporate Trainer</h5>
+                <div class="skill-table">
+                    <table class="table table-default">
+                        <thead>
+                        <tr>
+                            <th>SKILLS</th>
+                            <th class="text-right">
+                                <small>(Hrs of Training given)</small>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="skill">Branding</td>
+                            <td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
+                        </tr>
+                        <tr>
+                            <td class="skill">UX Designing</td>
+                            <td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
+                        </tr>
+                        <tr>
+                            <td class="skill">Branding</td>
+                            <td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
+                        </tr>
+                        <tr>
+                            <td class="skill">UX Designing</td>
+                            <td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
+                        </tr>
+                        <tr>
+                            <td class="skill">Branding</td>
+                            <td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
+                        </tr>
+                        <tr>
+                            <td class="skill">UX Designing</td>
+                            <td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-right more-skills">
+                        <a href="" data-toggle="modal" data-target="#allSkills">+ 24 Skills</a>
+                    </div>
+                </div>
+
             </div>
-    		<button class="btn btn-message">
-    			<i class="icon-chat_bubble"></i>&nbsp; Send Message
-    		</button>
         </div>
 
-        <div class="tab-section">
-        	<ul class="nav nav-tabs flat-tabs">
-			  <li class="active"><a data-toggle="tab" href="#timeline"><i class="icon-visibility"></i> Timeline</a></li>
-			  <li><a data-toggle="tab" href="#trainings"><i class="icon-insert_invitation"></i> Scheduled Trainings</a></li>
-			  <li><a data-toggle="tab" href="#work"><i class="icon-card_travel"></i> Work Experience</a></li>
-			  <li><a data-toggle="tab" href="#about"><i class="icon-person"></i> About</a></li>
-			</ul>
+        <!------------------------Mid Section-------------------->
+        <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+            <div class="middle-section">
+                <div class="ratings pull-right">
+                    <h5>RATINGS</h5>
+                    <ul class="star-container" type="none">
+                        <li><i class="icon-star star-filled"></i></li>
+                        <li><i class="icon-star star-filled"></i></li>
+                        <li><i class="icon-star star-filled"></i></li>
+                        <li><i class="icon-star star-filled"></i></li>
+                        <li><i class="icon-star"></i></li>
+                    </ul>
+                </div>
+                <div class="heading-text">
+                    <h3>Michael William
+                        <small><i class="icon-person_pin_circle"></i> Miami, FL</small>
+                    </h3>
+                    <h5>Corporate Trainer</h5>
+                </div>
+                <button class="btn btn-message">
+                    <i class="icon-chat_bubble"></i>&nbsp; Send Message
+                </button>
+            </div>
 
-			<div class="tab-content">
-			  <div id="timeline" class="tab-pane fade in active">
-			    <div class="info-sections">
-			    	<h4>RECENT TRAININGS</h4>
-			    	<div class="row">
-			    			<div class="timeline-centered">
-    
-	<article class="timeline-entry">
-		
-		<div class="timeline-entry-inner">
-			<div class="timeline-time"><span>Jun 26, 2018</span></div>
-			
-			<div class="timeline-icon">
-			</div>
-			
-			<div class="timeline-label">
-				<div class="company-logo" style="background-image: url(img/freestone.png);">
-				</div>
-				<div class="timeline-table-container">
-				<table class="table table-default table-timeline">
-					<caption>L & T Private Limited</caption>
-					<tbody>
-						<tr>
-							<td class="label-table">Duration:</td>
-							<td>12 Hour(s)</td>
-						</tr>
-						<tr>
-							<td class="label-table">Attendants:</td>
-							<td>60</td>
-						</tr>
-						<tr>
-							<td class="label-table">Technologies:</td>
-							<td>UX Designing, UI Designing, Web Development</td>
-						</tr>
-					</tbody>
-				</table>
-				</div>
-			</div>
-		</div>
-	</article>
+            <div class="tab-section">
+                <ul class="nav nav-tabs flat-tabs">
+                    <li class="active"><a data-toggle="tab" href="#timeline"><i class="icon-visibility"></i> Timeline</a></li>
+                    <li><a data-toggle="tab" href="#trainings"><i class="icon-insert_invitation"></i> Scheduled Trainings</a></li>
+                    <li><a data-toggle="tab" href="#work"><i class="icon-card_travel"></i> Work Experience</a></li>
+                    <li><a data-toggle="tab" href="#about"><i class="icon-person"></i> About</a></li>
+                </ul>
 
-	</div>
-	<div class="timeline-centered">
-    
-	<article class="timeline-entry">
-		
-		<div class="timeline-entry-inner">
-			<div class="timeline-time"><span>Jun 26, 2018</span></div>
-			
-			<div class="timeline-icon">
-			</div>
-			
-			<div class="timeline-label">
-				<div class="company-logo" style="background-image: url(img/logo-5.png);">
-				</div>
-				<div class="timeline-table-container">
-				<table class="table table-default table-timeline">
-					<caption>L & T Private Limited</caption>
-					<tbody>
-						<tr>
-							<td class="label-table">Duration:</td>
-							<td>12 Hour(s)</td>
-						</tr>
-						<tr>
-							<td class="label-table">Attendants:</td>
-							<td>60</td>
-						</tr>
-						<tr>
-							<td class="label-table">Technologies:</td>
-							<td>UX Designing, UI Designing, Web Development</td>
-						</tr>
-					</tbody>
-				</table>
-				</div>
-			</div>
-		</div>
-	</article>
-	
-	</div>
-			    		
-			    	</div>
-			    </div>
-			  </div>
-			  <div id="trainings" class="tab-pane fade">
-			    <h3>Calender will appear here</h3>
-			  </div>
-			  <div id="work" class="tab-pane fade">
-			    <div class="info-sections">
-			    	<h4>WORK EXPERIENCE</h4>
-			    	<div class="work-container">
-			    		<h5>Pinnacle Infotech</h5>
-			    		<small>Jan 2017 - Dec 2017</small>
-			    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
-incididunt ut labore et dolore magna aliqua. remque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-			    	</div>
-			    	<div class="work-container">
-			    		<h5>Pinnacle Infotech</h5>
-			    		<small>Jan 2017 - Dec 2017</small>
-			    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
-incididunt ut labore et dolore magna aliqua. remque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-			    	</div>
-			    </div>
-			  </div>
-			  <div id="about" class="tab-pane fade">
-			    <div class="info-sections">
-			    	<h4>CONTACT INFORMATION</h4>
-			    	<table class="table table-default table-borderless">
-			    		<tbody>
-			    			<tr>
-			    				<td class="label-table">Email:</td>
-			    				<td><a>mikewill@gmail.com</a></td>
-			    			</tr>
-			    			<tr>
-			    				<td class="label-table">Phone:</td>
-			    				<td><a>+1 123 574 5621</a></td>
-			    			</tr>
-			    			<tr>
-			    				<td class="label-table">Availability:</td>
-			    				<td>10am to 6pm</td>
-			    			</tr>
-			    			<tr>
-			    				<td class="label-table">Website:</td>
-			    				<td><a>www.mikewillmade.it</a></td>
-			    			</tr>
-			    			<tr>
-			    				<td class="label-table">Address:</td>
-			    				<td>214, 8th Street, Miami Beach, Miami, FL 102-253</td>
-			    			</tr>
-			    		</tbody>
-			    	</table>
-			    </div>
-			    <div class="info-sections">
-			    	<h4>PERSONAL INFORMATION</h4>
-			    	<table class="table table-default table-borderless">
-			    		<tbody>
-			    			<tr>
-			    				<td class="label-table">Birthday:</td>
-			    				<td>November 2, 1989</td>
-			    			</tr>
-			    			<tr>
-			    				<td class="label-table">Gender:</td>
-			    				<td>Male</td>
-			    			</tr>
-			    		</tbody>
-			    	</table>
-			    </div>
-			  </div>
-			</div>
+                <div class="tab-content">
+                    <div id="timeline" class="tab-pane fade in active">
+                        <div class="info-sections">
+                            <h4>RECENT TRAININGS</h4>
+                            <div class="row">
+                                <div class="timeline-centered">
+
+                                    <article class="timeline-entry">
+
+                                        <div class="timeline-entry-inner">
+                                            <div class="timeline-time"><span>Jun 26, 2018</span></div>
+
+                                            <div class="timeline-icon">
+                                            </div>
+
+                                            <div class="timeline-label">
+                                                <div class="company-logo" style="background-image: url(img/freestone.png);">
+                                                </div>
+                                                <div class="timeline-table-container">
+                                                    <table class="table table-default table-timeline">
+                                                        <caption>L & T Private Limited</caption>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td class="label-table">Duration:</td>
+                                                            <td>12 Hour(s)</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="label-table">Attendants:</td>
+                                                            <td>60</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="label-table">Technologies:</td>
+                                                            <td>UX Designing, UI Designing, Web Development</td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+
+                                </div>
+                                <div class="timeline-centered">
+
+                                    <article class="timeline-entry">
+
+                                        <div class="timeline-entry-inner">
+                                            <div class="timeline-time"><span>Jun 26, 2018</span></div>
+
+                                            <div class="timeline-icon">
+                                            </div>
+
+                                            <div class="timeline-label">
+                                                <div class="company-logo" style="background-image: url(img/logo-5.png);">
+                                                </div>
+                                                <div class="timeline-table-container">
+                                                    <table class="table table-default table-timeline">
+                                                        <caption>L & T Private Limited</caption>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td class="label-table">Duration:</td>
+                                                            <td>12 Hour(s)</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="label-table">Attendants:</td>
+                                                            <td>60</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="label-table">Technologies:</td>
+                                                            <td>UX Designing, UI Designing, Web Development</td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="trainings" class="tab-pane fade">
+                        <h3>Calender will appear here</h3>
+                    </div>
+                    <div id="work" class="tab-pane fade">
+                        <div class="info-sections">
+                            <h4>WORK EXPERIENCE</h4>
+                            <div class="work-container">
+                                <h5>Pinnacle Infotech</h5>
+                                <small>Jan 2017 - Dec 2017</small>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. remque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                                    dicta sunt explicabo.</p>
+                            </div>
+                            <div class="work-container">
+                                <h5>Pinnacle Infotech</h5>
+                                <small>Jan 2017 - Dec 2017</small>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. remque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                                    dicta sunt explicabo.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="about" class="tab-pane fade">
+                        <div class="info-sections">
+                            <h4>CONTACT INFORMATION</h4>
+                            <table class="table table-default table-borderless">
+                                <tbody>
+                                <tr>
+                                    <td class="label-table">Email:</td>
+                                    <td><a>mikewill@gmail.com</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="label-table">Phone:</td>
+                                    <td><a>+1 123 574 5621</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="label-table">Availability:</td>
+                                    <td>10am to 6pm</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-table">Website:</td>
+                                    <td><a>www.mikewillmade.it</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="label-table">Address:</td>
+                                    <td>214, 8th Street, Miami Beach, Miami, FL 102-253</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="info-sections">
+                            <h4>PERSONAL INFORMATION</h4>
+                            <table class="table table-default table-borderless">
+                                <tbody>
+                                <tr>
+                                    <td class="label-table">Birthday:</td>
+                                    <td>November 2, 1989</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-table">Gender:</td>
+                                    <td>Male</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 </div>
 
 <!-- Modal -->
 <div id="allSkills" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+    <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">All Skills</h4>
-      </div>
-      <div class="modal-body">
-       <div class="skill-table">
-        	<table class="table table-default">
-        		<thead>
-        			<tr>
-        				<th>SKILLS</th>
-        				<th class="text-right"><small>(Hrs of Training given)</small></th>
-        			</tr>
-        		</thead>
-        		<tbody>
-        			<tr>
-        				<td class="skill">Branding</td>
-        				<td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
-        			</tr>
-        			<tr>
-        				<td class="skill">UX Designing</td>
-        				<td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
-        			</tr>
-        			<tr>
-        				<td class="skill">Branding</td>
-        				<td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
-        			</tr>
-        			<tr>
-        				<td class="skill">UX Designing</td>
-        				<td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
-        			</tr>
-        			<tr>
-        				<td class="skill">Branding</td>
-        				<td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
-        			</tr>
-        			<tr>
-        				<td class="skill">UX Designing</td>
-        				<td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
-        			</tr>
-        		</tbody>
-        	</table>
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">All Skills</h4>
+            </div>
+            <div class="modal-body">
+                <div class="skill-table">
+                    <table class="table table-default">
+                        <thead>
+                        <tr>
+                            <th>SKILLS</th>
+                            <th class="text-right">
+                                <small>(Hrs of Training given)</small>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="skill">Branding</td>
+                            <td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
+                        </tr>
+                        <tr>
+                            <td class="skill">UX Designing</td>
+                            <td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
+                        </tr>
+                        <tr>
+                            <td class="skill">Branding</td>
+                            <td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
+                        </tr>
+                        <tr>
+                            <td class="skill">UX Designing</td>
+                            <td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
+                        </tr>
+                        <tr>
+                            <td class="skill">Branding</td>
+                            <td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
+                        </tr>
+                        <tr>
+                            <td class="skill">UX Designing</td>
+                            <td class="text-right"><label class="label label-primary label-corp">24 hrs</label></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
     </div>
-
-  </div>
-</div>
 
 </body>
 
 <!---- All Scripts ---->
-	<script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </html>

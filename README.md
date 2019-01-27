@@ -17,3 +17,6 @@ Description:
 
 Technology:
 > Python, Django, REST, Postgres
+
+Pending issues:
+> Send message form do not show form errors because POST not opening the send message box.

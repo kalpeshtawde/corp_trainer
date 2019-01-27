@@ -1,4 +1,5 @@
 from django.views import generic
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Count
@@ -6,8 +7,9 @@ from django.urls import reverse_lazy
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from django.views.decorators.csrf import csrf_exempt
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from django.http import HttpResponseRedirect
+
 
 
 from .forms import *
@@ -60,6 +62,7 @@ class DetailView(generic.DetailView):
         detail_user = Profile.objects.filter(pk=self.kwargs['pk'])[0].user
         context['detail_timeline'] = Timeline.objects.filter(user=detail_user)
         context['detail_experience'] = Experience.objects.filter(user=detail_user)
+        context['message_form'] = MessageForm
         return context
 
 
@@ -118,21 +121,6 @@ class TimelineView(generic.View):
             return redirect('trainer:update')
 
 
-class MessageView(generic.View):
-    form_class = MessageForm
-    model = Message
-    template_name = 'trainer/detail.html'
-
-    def post(self, request):
-        form = self.form_class(request.POST)
-
-        if form.is_valid():
-            timeline = form.save(commit=False)
-            timeline.user = request.user
-            timeline.save()
-            return redirect('trainer:detail')
-
-
 class ExperienceView(generic.View):
     form_class = ExperienceForm
     model = Experience
@@ -140,7 +128,6 @@ class ExperienceView(generic.View):
 
     def post(self, request):
         form = self.form_class(request.POST)
-        print(form.errors)
 
         if form.is_valid():
             experience = form.save(commit=False)
@@ -159,12 +146,26 @@ class TimelineDelete(generic.DeleteView):
 def newacct(request):
     return render(request, "trainer/acct_created.html")
 
+
 @login_required()
 def update(request):
     return render(request, "trainer/edit_profile.html")
 
+
 def inbox(request):
     return render(request, "trainer/inbox.html")
+
+
+def message(request):
+    template_name = 'trainer/detail.html'
+    if request.method == "POST":
+        form = MessageForm(request.POST)
+
+        if form.is_valid():
+            print("----------------")
+            return redirect('trainer:detail', 1)
+        else:
+            messages.error(request, "Error")
 
 
 ######## Rest Framework ###############
@@ -190,5 +191,3 @@ class MessageAPIView(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-

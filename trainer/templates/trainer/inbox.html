@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block body %}
+{% if user.is_authenticated %}
 <div class="container" ng-app="message" ng-controller="messageController">
   <div class="middle-section">
   <div class="search-result-header">
@@ -65,4 +66,5 @@
 </div>
 
 </div>
+{% endif %}
 {% endblock %}
