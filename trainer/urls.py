@@ -13,7 +13,7 @@ urlpatterns = [
 
     # /trainer/login/
     url(r'^login/$', LoginView.as_view(template_name='trainer/login.html', authentication_form=LoginForm), name='login'),
-    url(r'^logout/$', LogoutView.as_view(template_name='trainer/login.html'), name='logout'),
+    url(r'^logout/$', LogoutView.as_view(template_name='trainer/user_listing.html'), name='logout'),
 
     # /trainer/listing/
     url(r'^listing/$', views.ListingView.as_view(), name='listing'),

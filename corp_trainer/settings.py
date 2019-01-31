@@ -153,6 +153,7 @@ MEDIA_URL = '/media/'
 
 
 LOGIN_REDIRECT_URL=reverse_lazy('trainer:listing')
+LOGOUT_REDIRECT_URL=reverse_lazy('trainer:listing')
 
 # This has been used by login_required decorator
 LOGIN_URL = reverse_lazy('trainer:login')
