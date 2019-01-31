@@ -94,7 +94,7 @@ span.btn-input-search {
 }
 
 .navbar-menu>li>a {
-    /* font-size: 22px;*/
+    font-size: 14px;
     color: #fff !important;
     line-height: 40px;
     transition: 0.4s;

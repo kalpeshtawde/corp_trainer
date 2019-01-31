@@ -17,6 +17,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right navbar-menu ">
+        <li><a href="{% url 'trainer:register' %}" class="btn btn-message">I'm a trainer</a></li>
         <li>
 			<div class="form-group">
                 <form method="get " role="search" action="{% url 'trainer:listing' %}">
