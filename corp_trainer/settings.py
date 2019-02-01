@@ -33,8 +33,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'ec2-13-127-201-46.ap-south-1.compute.amazonaws.com',
-    'trainourstaff.com/trainer',
+    'trainourstaff.com',
+    'www.trainourstaff.com',
     '13.127.201.46',
+    '13.126.115.116',
     '127.0.0.1'
 ]
 
