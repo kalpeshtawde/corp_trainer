@@ -23,9 +23,9 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for tech in detail_timeline %}
+                        {% for skill in detail_skill %}
                         <tr>
-                            <td class="skill">{{tech.technology}}</td>
+                            <td class="skill">{{skill.title}}</td>
                             <td class="text-right"><label class="label label-primary label-corp">{{skill.hours}} hrs</label></td>
                         </tr>
                         {% endfor %}
