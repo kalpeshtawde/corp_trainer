@@ -133,7 +133,6 @@ class TimelineForm(forms.ModelForm):
         required=True
     )
 
-
     class Meta:
         model = Timeline
         fields = ['organization', 'technology', 'from_date', 'hours', 'trainee_cnt']
