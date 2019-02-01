@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Count
+from django.db import transaction
 from django.urls import reverse_lazy
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -111,6 +112,13 @@ class TimelineView(generic.View):
     model = Timeline
     template_name = 'trainer/edit_profile.html'
 
+    def add_skills(self, technologies, user):
+        if technologies:
+            with transaction.atomic():
+                for tech in technologies.split(","):
+                    s = Skill(user=user, title=tech.strip(), hours=0)
+                    s.save()
+
     def post(self, request):
         form = self.form_class(request.POST)
 
@@ -118,6 +126,7 @@ class TimelineView(generic.View):
             timeline = form.save(commit=False)
             timeline.user = request.user
             timeline.save()
+            self.add_skills(request.POST['technology'], timeline.user)
             return redirect('trainer:update')
 
 
