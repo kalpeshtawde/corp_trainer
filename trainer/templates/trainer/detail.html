@@ -18,15 +18,15 @@
                         <tr>
                             <th>SKILLS</th>
                             <th class="text-right">
-                                <small>(Hrs of Training given)</small>
+                                <small>(Count of Training given)</small>
                             </th>
                         </tr>
                         </thead>
                         <tbody>
                         {% for skill in detail_skill %}
                         <tr>
-                            <td class="skill">{{skill.title}}</td>
-                            <td class="text-right"><label class="label label-primary label-corp">{{skill.hours}} hrs</label></td>
+                            <td class="skill">{{skill.0}}</td>
+                            <td class="text-right"><label class="label label-primary label-corp">{{skill.1}}</label></td>
                         </tr>
                         {% endfor %}
                         </tbody>

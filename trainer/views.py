@@ -63,7 +63,8 @@ class DetailView(generic.DetailView):
         detail_user = Profile.objects.filter(pk=self.kwargs['pk'])[0].user
         context['detail_timeline'] = Timeline.objects.filter(user=detail_user)
         context['detail_experience'] = Experience.objects.filter(user=detail_user)
-        context['detail_skill'] = Skill.objects.filter(user=detail_user)
+        context['detail_skill'] = Skill.objects.filter(user=detail_user).values_list(
+            'title').annotate(total=Count('title')).order_by('-total')
         context['message_form'] = MessageForm
         return context
 
