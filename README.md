@@ -22,4 +22,5 @@ Pending issues:
 > Send message form do not show form errors because POST not opening the send message box.
 
 Pending development:
-> Edit profile -> Timeline -> Start Date calendar control need to add. 
+> Edit profile -> Timeline -> Start Date calendar control need to add.
+> Need to implement django validators.

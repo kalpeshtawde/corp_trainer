@@ -8,6 +8,7 @@ app.controller('messageController', function($scope, $http, $filter) {
     //$scope.messageList = [{msgText: 'Finish this app', done: false}];
 
     $http.get('/trainer/api/message/').then(function(response) {
+        console.log(response.data)
         $scope.messageList = response.data
         $scope.messageList = []
         for (var i= 0; i < response.data.length; i++) {

@@ -30,7 +30,7 @@
             <span ng-bind="msg.msgText"></span>
             </a>
             <span class="pull-right message-time">
-            	[[msg.msgDateTime]]
+            	[[msg.msgDateTime | date:"MM/dd/yyyy 'at' h:mma"]]
             </span>
             <div class="clearfix"></div>
           </h5>

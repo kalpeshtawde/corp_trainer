@@ -173,7 +173,6 @@ def message(request):
         form = MessageForm(request.POST)
 
         if form.is_valid():
-            print("----------------")
             return redirect('trainer:detail', 1)
         else:
             messages.error(request, "Error")
