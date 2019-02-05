@@ -42,6 +42,9 @@ urlpatterns = [
     # /trainer/update/123/delete
     url(r'^update/(?P<pk>[0-9]+)/delete/$', views.TimelineDelete.as_view(), name='timeline-delete'),
 
+    # /trainer/pagenotfound
+    url(r'^pagenotfound/$', views.pagenotfound, name='pagenotfound'),
+
     # Rest framework urls
     url(r'^api/message', views.MessageAPIView.as_view(), name='api_message'),
 

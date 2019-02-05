@@ -167,6 +167,10 @@ def inbox(request):
     return render(request, "trainer/inbox.html")
 
 
+def pagenotfound(request):
+    return render(request, "trainer/pagenotfound.html")
+
+
 def message(request):
     template_name = 'trainer/detail.html'
     if request.method == "POST":
