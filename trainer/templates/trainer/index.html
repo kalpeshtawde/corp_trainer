@@ -22,7 +22,7 @@
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav navbar-right navbar-menu">
-                            <li><a href="#home">Home</a></li>
+                            <li><a href="{% url 'trainer:listing' %}">Listing</a></li>
                             <li><a href="#about">About us</a></li>
                             <li><a href="#work">How it works</a></li>
                             <li><a href="{% url 'trainer:register' %}" class="btn btn-message">I'm a trainer</a></li>
@@ -37,10 +37,12 @@
                     <div class="banner-title stick-left">
                         <h1>FIND A TRAINER</h1>
                         <h4>Shortlist best trainers for wide range of skillsets</h4>
+                        <form method="get " role="search" action="{% url 'trainer:listing' %}">
                         <div class="input-group">
-                            <input type="text" class="form-control searchbox" placeholder="i.e Name, Technology..." aria-describedby="basic-addon2">
-                            <span class="btn input-group-addon btn-input-search" id="basic-addon2" type="button"><i class="icon-search"></i></span>
+                                <input type="text" name="search" class="form-control searchbox" placeholder="i.e Name, Technology..." aria-describedby="basic-addon2">
+                                <span class="btn input-group-addon btn-input-search" id="basic-addon2" type="button"><i class="icon-search"></i></span>
                         </div>
+                        </form>
                     </div>
                 </div>
                 <div class="hidden-sm hidden-xs col-md-7 banner-image">
