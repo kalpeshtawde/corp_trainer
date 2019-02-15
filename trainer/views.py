@@ -84,10 +84,13 @@ class UserFormView(generic.View):
 
         if form.is_valid():
             user = form.save(commit=False)
-
             password = form.cleaned_data['password']
             user.set_password(password)
             user.save()
+
+            #Add entry to profile model so that it is visible in listing
+            profile = Profile(user=user)
+            profile.save()
 
             return redirect('trainer:newacct')
 
