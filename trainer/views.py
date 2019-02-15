@@ -35,8 +35,7 @@ class ListingView(generic.ListView):
 
         if 'search' in self.request.GET:
             queryset = queryset.filter(
-                Q(user__first_name__contains=self.request.GET['search']) |
-                Q(user__last_name__contains=self.request.GET['search'])
+                Q(user__skill__title__contains=self.request.GET['search'])
             )
 
         queryset = queryset.annotate(total_cnt=Count('id'))
