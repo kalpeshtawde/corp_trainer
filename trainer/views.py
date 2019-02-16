@@ -9,8 +9,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
-from django.http import HttpResponseRedirect
-
+from math import ceil
 
 
 from .forms import *
@@ -25,6 +24,7 @@ class IndexView(generic.TemplateView):
 class ListingView(generic.ListView):
     template_name = 'trainer/user_listing.html'
     model = Profile
+    paginate_by = 4
 
     def get_queryset(self):
         queryset = super(ListingView, self).get_queryset()
@@ -38,8 +38,6 @@ class ListingView(generic.ListView):
                 Q(user__skill__title__contains=self.request.GET['search'])
             )
 
-        queryset = queryset.annotate(total_cnt=Count('id'))
-
         return queryset
 
     # instead of get_queryset or get, here get_context_data is used
@@ -50,6 +48,8 @@ class ListingView(generic.ListView):
         context['search'] = self.request.GET.get('search', 'give-default-value')
         context['form'] = SearchForm()
         context['count'] = self.get_queryset().count()
+        end = ceil(context['count'] / self.paginate_by) + 1
+        context['pages'] = range(1, end)
         return context
 
 
