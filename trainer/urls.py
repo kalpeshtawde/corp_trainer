@@ -35,14 +35,13 @@ urlpatterns = [
 
     # /trainer/update
     url(r'^update/$', views.MainView.as_view(), name='update'),
-
     url(r'^skill/$', views.SkillView.as_view(), name='skill'),
     url(r'^timeline/$', views.TimelineView.as_view(), name='timeline'),
     url(r'^experience/$', views.ExperienceView.as_view(), name='experience'),
 
     # /trainer/update/123/delete
-    url(r'^update/(?P<pk>[0-9]+)/delete/$', views.TimelineDelete.as_view(), name='timeline-delete'),
-    url(r'^update/(?P<pk>[0-9]+)/delete/$', views.SkillDelete.as_view(), name='skill-delete'),
+    url(r'^update/timeline/(?P<pk>[0-9]+)/delete/$', views.TimelineDelete.as_view(), name='timeline-delete'),
+    url(r'^update/skill/(?P<pk>[0-9]+)/delete/$', views.SkillDelete.as_view(), name='skill-delete'),
 
     # /trainer/pagenotfound
     url(r'^pagenotfound/$', views.pagenotfound, name='pagenotfound'),

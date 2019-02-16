@@ -30,7 +30,7 @@ class Skill(models.Model):
     # Skill model which contains trainer's skill details
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
-    hours = models.IntegerField()
+    hours = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
