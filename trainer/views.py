@@ -100,15 +100,32 @@ class MainView(generic.TemplateView):
     template_name = 'trainer/edit_profile.html'
 
     def get(self, request, *args, **kwargs):
+        skill_form = SkillForm(self.request.GET or None)
         timeline_form = TimelineForm(self.request.GET or None)
         experience_form = ExperienceForm(self.request.GET or None)
         context = self.get_context_data(**kwargs)
+        context['skill_form'] = skill_form
         context['timeline_form'] = timeline_form
         context['experience_form'] = experience_form
         context['user_data'] = User.objects.filter(
             pk=self.request.user.id
         ).prefetch_related('profile_set', 'timeline_set')
         return self.render_to_response(context)
+
+
+class SkillView(generic.View):
+    form_class = SkillForm
+    model = Skill
+    template_name = 'trainer/edit_profile.html'
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+
+        if form.is_valid():
+            skill = form.save(commit=False)
+            skill.user = request.user
+            skill.save()
+            return redirect('trainer:update')
 
 
 class TimelineView(generic.View):
@@ -149,6 +166,11 @@ class ExperienceView(generic.View):
             return redirect('trainer:update')
         else:
             return redirect('trainer:update')
+
+
+class SkillDelete(generic.DeleteView):
+    model = Skill
+    success_url = reverse_lazy('trainer:update')
 
 
 class TimelineDelete(generic.DeleteView):

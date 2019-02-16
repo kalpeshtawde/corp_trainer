@@ -9,12 +9,51 @@
             <div class="middle-section">
                 <div class="tab-section">
                     <ul class="nav nav-tabs flat-tabs">
-                        <li class="active"><a data-toggle="tab" href="#timeline"><i class="icon-visibility"></i> Timeline</a></li>
+                        <li class="active"><a data-toggle="tab" href="#skill"><i class="icon-visibility"></i> Skills</a></li>
+                        <li><a data-toggle="tab" href="#timeline"><i class="icon-visibility"></i> Timeline</a></li>
                         <li><a data-toggle="tab" href="#work"><i class="icon-card_travel"></i> Work Experience</a></li>
                         <li><a data-toggle="tab" href="#about"><i class="icon-person"></i> About</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div id="timeline" class="tab-pane fade in active">
+                        <div id="skill" class="tab-pane fade in active">
+                            <div class="info-sections">
+                                <form method="post" action="{% url 'trainer:skill' %}">
+                                    {% csrf_token %}
+                                    <h4>My Skills</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-default">
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        {{skill_form.title}}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-add"><i class="icon icon-add"></i></button>
+                                                </td>
+                                            </tr>
+                                            {{form.errors}}
+                                            {% for skill in user_data.0.skill_set.all %}
+                                            <tr>
+                                                <td>{{skill.title}}</td>
+                                                <td>
+                                                    <!--<button class="btn btn-edit"><i class="icon icon-mode_edit"></i></button>-->
+                                                    <form action="{% url 'trainer:skill-delete' skill.id %}" method="post">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="skill_id" value="{{ skill.id }}">
+                                                        <button class="btn btn-delete"><i class="icon icon-delete"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="timeline" class="tab-pane fade">
                             <div class="info-sections">
                                 <form method="post" action="{% url 'trainer:timeline' %}">
                                     {% csrf_token %}

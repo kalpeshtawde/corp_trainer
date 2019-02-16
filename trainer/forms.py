@@ -109,6 +109,21 @@ class UserForm(forms.ModelForm):
         return password
 
 
+class SkillForm(forms.ModelForm):
+
+    title = forms.CharField(
+        max_length=50,
+        widget=forms.TextInput(
+            attrs={'class': "form-control", 'placeholder': 'Enter your skills, one at a time', 'type': 'text'}
+        ),
+        required=True
+    )
+
+    class Meta:
+        model = Skill
+        fields = ['title']
+
+
 class TimelineForm(forms.ModelForm):
 
     organization = forms.CharField(
