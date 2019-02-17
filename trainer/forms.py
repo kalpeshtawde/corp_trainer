@@ -124,12 +124,49 @@ class SkillForm(forms.ModelForm):
         fields = ['title']
 
 
+class AvailabilityForm(forms.ModelForm):
+
+    availability = forms.CharField(
+        max_length=2000,
+        widget=forms.TextInput(
+            attrs={
+                'class': "form-control",
+                'placeholder': 'i.e Mumbai, Anywhere in London, Europe',
+                'type': 'text',
+                'disabled': 'disabled'
+            }
+        ),
+        required=True
+    )
+
+    hours_per_week = forms.IntegerField(
+        widget=forms.TextInput(
+            attrs={
+                'class': "form-control",
+                'placeholder': 'i.e Mumbai, Anywhere in London, Europe',
+                'type': 'text',
+                'disabled': 'disabled'
+            }
+        ),
+        required=True
+    )
+
+
+    class Meta:
+        model = Skill
+        fields = ['title']
+
+
 class TimelineForm(forms.ModelForm):
 
     organization = forms.CharField(
         max_length=100,
         widget=forms.TextInput(
-            attrs={'class': "form-control", 'placeholder': 'i.e ABC Limited', 'type': 'text'}
+            attrs={
+                'class': "form-control",
+                'placeholder': 'i.e ABC Limited',
+                'type': 'text'
+            }
         ),
         required=True
     )

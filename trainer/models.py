@@ -36,6 +36,16 @@ class Skill(models.Model):
         return self.title
 
 
+class Availability(models.Model):
+    # Skill model which contains trainer's skill details
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    locations = models.CharField(max_length=2000)
+    hours_per_week = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.locations + "|" + self.hours_per_week
+
+
 class Timeline(models.Model):
     # Timeline model which contains trainer's training history
     user = models.ForeignKey(User, on_delete=models.CASCADE)

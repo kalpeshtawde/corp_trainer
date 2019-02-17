@@ -36,6 +36,7 @@ urlpatterns = [
     # /trainer/update
     url(r'^update/$', views.MainView.as_view(), name='update'),
     url(r'^skill/$', views.SkillView.as_view(), name='skill'),
+    url(r'^availability/$', views.AvailabilityView.as_view(), name='availability'),
     url(r'^timeline/$', views.TimelineView.as_view(), name='timeline'),
     url(r'^experience/$', views.ExperienceView.as_view(), name='experience'),
 

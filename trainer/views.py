@@ -101,10 +101,13 @@ class MainView(generic.TemplateView):
 
     def get(self, request, *args, **kwargs):
         skill_form = SkillForm(self.request.GET or None)
+        availability_form = AvailabilityForm(self.request.GET or None)
         timeline_form = TimelineForm(self.request.GET or None)
         experience_form = ExperienceForm(self.request.GET or None)
+
         context = self.get_context_data(**kwargs)
         context['skill_form'] = skill_form
+        context['availability_form'] = availability_form
         context['timeline_form'] = timeline_form
         context['experience_form'] = experience_form
         context['user_data'] = User.objects.filter(
@@ -126,6 +129,21 @@ class SkillView(generic.View):
             skill.user = request.user
             skill.save()
             return redirect('trainer:update')
+
+
+class AvailabilityView(generic.View):
+    form_class = AvailabilityForm
+    model = Availability
+    template_name = 'trainer/edit_profile.html'
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+
+        if form.is_valid():
+            availability = form.save(commit=False)
+            availability.user = request.user
+            availability.save()
+            return redirect('trainer:availability')
 
 
 class TimelineView(generic.View):
