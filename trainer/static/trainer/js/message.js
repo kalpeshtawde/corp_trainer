@@ -6,9 +6,9 @@ var app = angular.module('message', [], function($interpolateProvider) {
 
 app.controller('messageController', function($scope, $http, $filter) {
     //$scope.messageList = [{msgText: 'Finish this app', done: false}];
+    $scope.disableAvailability = true;
 
     $http.get('/trainer/api/message/').then(function(response) {
-        console.log(response.data)
         $scope.messageList = response.data
         $scope.messageList = []
         for (var i= 0; i < response.data.length; i++) {
@@ -57,5 +57,10 @@ app.controller('messageController', function($scope, $http, $filter) {
             };
         })
     };
+
+    $scope.enableAvailability = function() {
+        $scope.disableAvailability = false;
+    };
+
 
 });

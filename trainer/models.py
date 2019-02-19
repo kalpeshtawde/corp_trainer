@@ -43,7 +43,7 @@ class Availability(models.Model):
     hours_per_week = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.locations + "|" + self.hours_per_week
+        return self.locations + "|" + str(self.hours_per_week)
 
 
 class Timeline(models.Model):

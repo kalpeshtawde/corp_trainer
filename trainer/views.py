@@ -142,8 +142,12 @@ class AvailabilityView(generic.View):
         if form.is_valid():
             availability = form.save(commit=False)
             availability.user = request.user
+
+            # One user can have only one availability data.
+            # Delete existing data
+            Availability.objects.filter(user=availability.user).delete()
             availability.save()
-            return redirect('trainer:availability')
+            return redirect('trainer:update')
 
 
 class TimelineView(generic.View):
@@ -165,7 +169,7 @@ class TimelineView(generic.View):
             timeline = form.save(commit=False)
             timeline.user = request.user
             timeline.save()
-            self.add_skills(request.POST['technology'], timeline.user)
+            #self.add_skills(request.POST['technology'], timeline.user)
             return redirect('trainer:update')
 
 

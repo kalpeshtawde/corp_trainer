@@ -3,7 +3,7 @@
 
 {% block body %}
 
-<div class="container">
+<div class="container" ng-app="message" ng-controller="messageController">
     <div class="row">
         <div class="col-sm-12 col-xs-12">
             <div class="middle-section">
@@ -11,7 +11,7 @@
                     <ul class="nav nav-tabs flat-tabs">
                         <li class="active"><a data-toggle="tab" href="#skill"><i class="icon-visibility"></i> Skills</a></li>
                         <li><a data-toggle="tab" href="#availability"><i class="icon-visibility"></i> Availability</a></li>
-                        <li><a data-toggle="tab" href="#timeline"><i class="icon-visibility"></i> Timeline</a></li>
+                        <li><a data-toggle="tab" href="#timeline"><i class="glyphicon-ok"></i> Timeline</a></li>
                         <li><a data-toggle="tab" href="#work"><i class="icon-card_travel"></i> Work Experience</a></li>
                         <li><a data-toggle="tab" href="#about"><i class="icon-person"></i> About</a></li>
                     </ul>
@@ -56,16 +56,17 @@
                         </div>
                         <div id="availability" class="tab-pane fade">
                             <div class="info-sections">
-                                <form method="post" action="{% url 'trainer:availability' %}"   >
+
+                                    <button class="btn btn-edit pull-right m-b-lg"  ng-click="enableAvailability()"><i class="icon icon-mode_edit"></i></button>
+                                    <form method="post" action="{% url 'trainer:availability' %}"   >
                                     {% csrf_token %}
-                                    <button class="btn btn-edit pull-right m-b-lg"><i class="icon icon-mode_edit"></i></button>
                                     <button class="btn btn-add pull-right m-b-lg"><i class="icon icon-check"></i></button>
                                     <div class="row">
                                         <div class="col-sm-4 m-b-lg">
                                             <h4>MY AVAILABILITY</h4>
                                             <div class="form-group">
                                                 <label>Locations</label>
-                                                {{availability_form.availability}}
+                                                {{availability_form.locations}}
                                             </div>
                                             <div class="form-group">
                                                 <label>Hours Per Week</label>
@@ -73,7 +74,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                    </form>
                             </div>
                         </div>
                         <div id="timeline" class="tab-pane fade">

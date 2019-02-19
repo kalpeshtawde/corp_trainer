@@ -126,35 +126,32 @@ class SkillForm(forms.ModelForm):
 
 class AvailabilityForm(forms.ModelForm):
 
-    availability = forms.CharField(
+    locations = forms.CharField(
         max_length=2000,
         widget=forms.TextInput(
             attrs={
                 'class': "form-control",
-                'placeholder': 'i.e Mumbai, Anywhere in London, Europe',
                 'type': 'text',
-                'disabled': 'disabled'
+                'ng-disabled': 'disableAvailability'
             }
         ),
-        required=True
+        required=True,
     )
 
     hours_per_week = forms.IntegerField(
         widget=forms.TextInput(
             attrs={
                 'class': "form-control",
-                'placeholder': 'i.e Mumbai, Anywhere in London, Europe',
                 'type': 'text',
-                'disabled': 'disabled'
+                'ng-disabled': 'disableAvailability'
             }
         ),
         required=True
     )
 
-
     class Meta:
-        model = Skill
-        fields = ['title']
+        model = Availability
+        fields = ['locations', 'hours_per_week']
 
 
 class TimelineForm(forms.ModelForm):
