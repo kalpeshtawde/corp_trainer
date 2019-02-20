@@ -150,6 +150,7 @@ class AvailabilityView(generic.View):
             return redirect('trainer:update')
 
 
+
 class TimelineView(generic.View):
     form_class = TimelineForm
     model = Timeline

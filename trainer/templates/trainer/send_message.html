@@ -10,33 +10,33 @@
                     <h4 class="modal-title">Send Message</h4>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="{% url 'trainer:detail' 1 %}">
+                    <!--<form method="post" action="{% url 'trainer:detail' 1 %}">-->
                         {% csrf_token %}
                         <div class="form-group">
                             <label>Type your message:</label>
                             {{message_form.message}}
-                            {{message_form.message.errors}}
+                            <label ng-show="false">Please type your message.</label>
                         </div>
                         <div class="row">
                             <div class="form-group col-sm-6">
                                 <label>Contact Number:</label>
                                 {{message_form.phone}}
-                                {{message_form.phone.errors}}
+                                <label ng-show="false">Please enter contact number.</label>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label>Email:</label>
                                 {{message_form.email}}
-                                {{message_form.email.errors}}
+                                <label ng-show="false">Please enter your email id.</label>
                             </div>
                         </div>
                         <div class="text-right">
                             <button class="btn btn-link">Cancel</button>
                             <!--<button class="btn btn-message" ng-click="sendMsg()">-->
-                            <button class="btn btn-message">
+                            <button class="btn btn-message" ng-click="sendMsg()">
                                 Send
                             </button>
                         </div>
-                    </form>
+                    <!--</form>-->
                 </div>
 
             </div>

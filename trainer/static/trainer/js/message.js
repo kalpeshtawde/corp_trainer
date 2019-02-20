@@ -24,15 +24,21 @@ app.controller('messageController', function($scope, $http, $filter) {
     })
 
     $scope.sendMsg = function() {
-        var data = {
-        "profile": 1,
-        "message": "Hi Kalpesh, Can you conduct some training at our place?",
-        "phone": "9619740000",
-        "email": "trupti@outlook.com",
-        "read": false,
-        "dttime": "2019-01-10T15:03:50.683434Z"
+//        var data = {
+//        "profile": 1,
+//        "message": "Hi Kalpesh, Can you conduct some training at our place?",
+//        "phone": "9619740000",
+//        "email": "trupti@outlook.com",
+//        "read": false,
+//        "dttime": "2019-01-10T15:03:50.683434Z"
+//        }
+//        $http.put('/trainer/api/message/', data)
+        if (!$scope.message_text) {
+            console.log("Message is blank")
+        } else {
+          console.log($scope.message_text);
         }
-        $http.put('/trainer/api/message/', data)
+
     }
 
     $scope.sortMessage = function(order) {

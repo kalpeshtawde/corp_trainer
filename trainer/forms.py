@@ -289,7 +289,8 @@ class MessageForm(forms.Form):
             attrs={
                 'class': "form-control",
                 'rows': 5,
-                'placeholder': "Provide requirement details like type of training, skills, location, number of days, number of attendants"
+                'placeholder': "Provide requirement details like type of training, skills, location, number of days, number of attendants",
+                'ng-model': 'message_text'
             }
         ),
         required=False
@@ -300,6 +301,7 @@ class MessageForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 'class': "form-control",
+                'ng-model': 'message_phone'
             }
         ),
         required=False
@@ -310,6 +312,7 @@ class MessageForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 'class': "form-control",
+                'ng-model': 'message_email'
             }
         ),
         required=False
