@@ -1,6 +1,6 @@
 <div class="container" ng-app="message" ng-controller="messageController">
     <!-- Modal Send Message-->
-    <div id="message-modal" class="modal" role="dialog">
+    <div id="message-modal" class="modal" role="dialog" ng-show="showMessageModal">
         <div class="modal-dialog">
 
             <!-- Modal content-->
@@ -15,18 +15,18 @@
                         <div class="form-group">
                             <label>Type your message:</label>
                             {{message_form.message}}
-                            <label ng-show="false">Please type your message.</label>
+                            <label ng-show="blankMessage">Please type your message.</label>
                         </div>
                         <div class="row">
                             <div class="form-group col-sm-6">
                                 <label>Contact Number:</label>
                                 {{message_form.phone}}
-                                <label ng-show="false">Please enter contact number.</label>
+                                <label ng-show="blankPhone">Please enter contact number.</label>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label>Email:</label>
                                 {{message_form.email}}
-                                <label ng-show="false">Please enter your email id.</label>
+                                <label ng-show="blankEmail">Please enter valid email id.</label>
                             </div>
                         </div>
                         <div class="text-right">
