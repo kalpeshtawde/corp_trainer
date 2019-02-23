@@ -1,4 +1,4 @@
-var app = angular.module('message', [], function($interpolateProvider) {
+var app = angular.module('trainer', [], function($interpolateProvider) {
     // {{}} interpolated with [[]]
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');

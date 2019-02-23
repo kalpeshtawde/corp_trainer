@@ -49,5 +49,6 @@ urlpatterns = [
 
     # Rest framework urls
     url(r'^api/message', views.MessageAPIView.as_view(), name='api_message'),
+    url(r'^api/availability', views.AvailabilityAPIView.as_view(), name='api_availability'),
 
 ]

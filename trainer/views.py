@@ -252,3 +252,19 @@ class MessageAPIView(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class AvailabilityAPIView(APIView):
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+    def get(self, request):
+        availability = Availability.objects.all()
+        serializer = AvailabilitySerializer(availability, many=True)
+        return Response(serializer.data)
+
+    def put(self, request):
+        serializer = AvailabilitySerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
