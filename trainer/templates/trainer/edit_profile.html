@@ -18,12 +18,13 @@
                     <div class="tab-content">
                         <div id="skill" class="tab-pane fade in active">
                             <div class="info-sections">
-                                <form method="post" action="{% url 'trainer:skill' %}">
-                                    {% csrf_token %}
-                                    <h4>My Skills</h4>
-                                    <div class="table-responsive">
-                                        <table class="table table-default">
-                                            <tbody>
+
+                                <h4>My Skills</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-default">
+                                        <tbody>
+                                        <form method="post" action="{% url 'trainer:skill' %}">
+                                            {% csrf_token %}
                                             <tr>
                                                 <td>
                                                     <div class="form-group">
@@ -35,30 +36,30 @@
                                                 </td>
                                             </tr>
                                             {{form.errors}}
-                                            {% for skill in user_data.0.skill_set.all %}
-                                            <tr>
-                                                <td>{{skill.title}}</td>
-                                                <td>
-                                                    <!--<button class="btn btn-edit"><i class="icon icon-mode_edit"></i></button>-->
-                                                    <form action="{% url 'trainer:skill-delete' skill.id %}" method="post">
-                                                        {% csrf_token %}
-                                                        <input type="hidden" name="skill_id" value="{{ skill.id }}">
-                                                        <button class="btn btn-delete"><i class="icon icon-delete"></i></button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                            {% endfor %}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </form>
+                                        </form>
+                                        {% for skill in user_data.0.skill_set.all %}
+                                        <tr>
+                                            <td>{{skill.title}}</td>
+                                            <td>
+                                                <!--<button class="btn btn-edit"><i class="icon icon-mode_edit"></i></button>-->
+                                                <form action="{% url 'trainer:skill-delete' skill.id %}" method="post">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="skill_id" value="{{ skill.id }}">
+                                                    <button class="btn btn-delete"><i class="icon icon-delete"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                         <div id="availability" class="tab-pane fade">
                             <div class="info-sections">
 
-                                    <button class="btn btn-edit pull-right m-b-lg"  ng-click="enableAvailability()"><i class="icon icon-mode_edit"></i></button>
-                                    <form method="post" action="{% url 'trainer:availability' %}"   >
+                                <button class="btn btn-edit pull-right m-b-lg" ng-click="enableAvailability()"><i class="icon icon-mode_edit"></i></button>
+                                <form method="post" action="{% url 'trainer:availability' %}">
                                     {% csrf_token %}
                                     <button class="btn btn-add pull-right m-b-lg"><i class="icon icon-check"></i></button>
                                     <div class="row">
@@ -74,27 +75,27 @@
                                             </div>
                                         </div>
                                     </div>
-                                    </form>
+                                </form>
                             </div>
                         </div>
                         <div id="timeline" class="tab-pane fade">
                             <div class="info-sections">
-                                <form method="post" action="{% url 'trainer:timeline' %}">
-                                    {% csrf_token %}
-                                    <h4>MY TRAININGS</h4>
-                                    <div class="table-responsive">
-                                        <table class="table table-default">
-                                            <thead>
-                                            <tr>
-                                                <th>Company Name</th>
-                                                <th>Technologies</th>
-                                                <th>Start Date</th>
-                                                <th>Duration(Hrs)</th>
-                                                <th>Attendants</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
+                                <h4>MY TRAININGS</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-default">
+                                        <thead>
+                                        <tr>
+                                            <th>Company Name</th>
+                                            <th>Technologies</th>
+                                            <th>Start Date</th>
+                                            <th>Duration(Hrs)</th>
+                                            <th>Attendants</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <form method="post" action="{% url 'trainer:timeline' %}">
+                                            {% csrf_token %}
                                             <tr>
                                                 <td>
                                                     <div class="form-group">
@@ -127,27 +128,27 @@
                                                 </td>
                                             </tr>
                                             {{form.errors}}
-                                            {% for timeline in user_data.0.timeline_set.all %}
-                                            <tr>
-                                                <td>{{timeline.organization}}</td>
-                                                <td>{{timeline.technology}}</td>
-                                                <td>{{timeline.from_date}}</td>
-                                                <td>{{timeline.hours}}</td>
-                                                <td>{{timeline.trainee_cnt}}</td>
-                                                <td>
-                                                    <!--<button class="btn btn-edit"><i class="icon icon-mode_edit"></i></button>-->
-                                                    <form action="{% url 'trainer:timeline-delete' timeline.id %}" method="post">
-                                                        {% csrf_token %}
-                                                        <input type="hidden" name="timeline_id" value="{{ timeline.id }}">
-                                                        <button class="btn btn-delete"><i class="icon icon-delete"></i></button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                            {% endfor %}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </form>
+                                        </form>
+                                        {% for timeline in user_data.0.timeline_set.all %}
+                                        <tr>
+                                            <td>{{timeline.organization}}</td>
+                                            <td>{{timeline.technology}}</td>
+                                            <td>{{timeline.from_date}}</td>
+                                            <td>{{timeline.hours}}</td>
+                                            <td>{{timeline.trainee_cnt}}</td>
+                                            <td>
+                                                <!--<button class="btn btn-edit"><i class="icon icon-mode_edit"></i></button>-->
+                                                <form action="{% url 'trainer:timeline-delete' timeline.id %}" method="post">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="timeline_id" value="{{ timeline.id }}">
+                                                    <button class="btn btn-delete"><i class="icon icon-delete"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                         <div id="work" class="tab-pane fade">
