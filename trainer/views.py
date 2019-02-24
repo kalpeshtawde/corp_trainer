@@ -258,12 +258,13 @@ class AvailabilityAPIView(APIView):
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
 
     def get(self, request):
-        availability = Availability.objects.all()
+        availability = Availability.objects.filter(user=request.user)
         serializer = AvailabilitySerializer(availability, many=True)
         return Response(serializer.data)
 
     def put(self, request):
-        serializer = AvailabilitySerializer(data=request.data)
+        instance = Availability.objects.get(user=request.user)
+        serializer = AvailabilitySerializer(instance, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

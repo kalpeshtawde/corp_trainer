@@ -132,7 +132,8 @@ class AvailabilityForm(forms.ModelForm):
             attrs={
                 'class': "form-control",
                 'type': 'text',
-                'ng-disabled': 'disableAvailability'
+                'ng-disabled': 'disableAvailability',
+                'ng-model': 'locations_text'
             }
         ),
         required=True,
@@ -143,7 +144,8 @@ class AvailabilityForm(forms.ModelForm):
             attrs={
                 'class': "form-control",
                 'type': 'text',
-                'ng-disabled': 'disableAvailability'
+                'ng-disabled': 'disableAvailability',
+                'ng-model': 'hours_per_week_text'
             }
         ),
         required=True

@@ -3,7 +3,7 @@
 
 {% block body %}
 
-<div class="container" ng-app="trainer" ng-controller="messageController">
+<div class="container" ng-app="trainer" ng-controller="modifyController">
     <div class="row">
         <div class="col-sm-12 col-xs-12">
             <div class="middle-section">
@@ -59,9 +59,7 @@
                             <div class="info-sections">
 
                                 <button class="btn btn-edit pull-right m-b-lg" ng-click="enableAvailability()"><i class="icon icon-mode_edit"></i></button>
-                                <form method="post" action="{% url 'trainer:availability' %}">
-                                    {% csrf_token %}
-                                    <button class="btn btn-add pull-right m-b-lg"><i class="icon icon-check"></i></button>
+                                <button class="btn btn-add pull-right m-b-lg" ng-click="updateAvailability()"><i class="icon icon-check"></i></button>
                                     <div class="row">
                                         <div class="col-sm-4 m-b-lg">
                                             <h4>MY AVAILABILITY</h4>
@@ -75,7 +73,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </form>
                             </div>
                         </div>
                         <div id="timeline" class="tab-pane fade">

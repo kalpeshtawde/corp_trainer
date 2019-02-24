@@ -38,7 +38,7 @@ class Skill(models.Model):
 
 class Availability(models.Model):
     # Skill model which contains trainer's skill details
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     locations = models.CharField(max_length=2000)
     hours_per_week = models.IntegerField(default=0)
 

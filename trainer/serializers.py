@@ -12,4 +12,4 @@ class MessageSerializer(serializers.ModelSerializer):
 class AvailabilitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Availability
-        fields = ['id', 'user', 'locations', 'hours_per_week']
+        fields = ['locations', 'hours_per_week']

@@ -4,9 +4,32 @@ var app = angular.module('trainer', [], function($interpolateProvider) {
     $interpolateProvider.endSymbol(']]');
 });
 
-app.controller('messageController', function($scope, $http, $filter) {
-    //$scope.messageList = [{msgText: 'Finish this app', done: false}];
+app.controller('modifyController', function($scope, $http, $filter) {
+
     $scope.disableAvailability = true;
+
+    $http.get('/trainer/api/availability/').then(function(response) {
+        $scope.locations_text = response.data[0].locations
+        $scope.hours_per_week_text = response.data[0].hours_per_week
+    })
+
+    $scope.enableAvailability = function() {
+        $scope.disableAvailability = false;
+    };
+
+
+    $scope.updateAvailability = function() {
+        var data = {
+            "locations": $scope.locations_text,
+            "hours_per_week": $scope.hours_per_week_text,
+            };
+        console.log(data)
+        $http.put('/trainer/api/availability/', data);
+        $scope.disableAvailability = true;
+    }
+})
+
+app.controller('messageController', function($scope, $http, $filter) {
     $scope.showMessageModal = true;
 
     $http.get('/trainer/api/message/').then(function(response) {
@@ -89,10 +112,5 @@ app.controller('messageController', function($scope, $http, $filter) {
             };
         })
     };
-
-    $scope.enableAvailability = function() {
-        $scope.disableAvailability = false;
-    };
-
 
 });
