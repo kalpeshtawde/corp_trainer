@@ -28,7 +28,7 @@ class ListingView(generic.ListView):
 
     def get_queryset(self):
         queryset = super(ListingView, self).get_queryset()
-        queryset = queryset.prefetch_related('user')
+        queryset = queryset.prefetch_related('user', 'user__availability')
 
         # admin user not needed to show in user listing
         # queryset = queryset.exclude(User__username='admin')
@@ -48,8 +48,7 @@ class ListingView(generic.ListView):
         context['search'] = self.request.GET.get('search', 'give-default-value')
         context['form'] = SearchForm()
         context['count'] = self.get_queryset().count()
-        end = ceil(context['count'] / self.paginate_by) + 1
-        context['pages'] = range(1, end)
+        context['pages'] = range(1, ceil(context['count'] / self.paginate_by) + 1)
         return context
 
 
