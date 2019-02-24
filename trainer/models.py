@@ -17,6 +17,7 @@ class Profile(models.Model):
     address = models.CharField(max_length=500, null=True, blank=True)
     birth_date = models.DateField(null=True)
     gender = models.CharField(max_length=10, null=True)
+    activation_string = models.CharField(max_length=50, null=True)
 
 #    def get_absolute_url(self):
 #        return reverse('trainer:detail', kwargs={'pk': self.pk})

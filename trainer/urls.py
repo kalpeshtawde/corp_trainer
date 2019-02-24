@@ -22,10 +22,16 @@ urlpatterns = [
     url(r'^(?P<pk>\d+)/$', views.DetailView.as_view(), name='detail'),
 
     # /trainer/register/
-    url(r'^register/$', views.UserFormView.as_view(), name='register'),
+    url(r'^register/$', views.RegisterView.as_view(), name='register'),
 
     # /trainer/newacct/
     url(r'^newacct/$', views.newacct, name='newacct'),
+
+    # /trainer/verifyemail/
+    url(r'^verifyemail/$', views.verifyemail, name='verifyemail'),
+
+    # /trainer/activation/
+    url(r'^activation/$', views.activation, name='activation'),
 
     # /trainer/inbox
     url(r'^inbox/$', views.inbox, name='inbox'),

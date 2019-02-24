@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Count
 from django.db import transaction
 from django.urls import reverse_lazy
+from django.utils.crypto import get_random_string
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -67,7 +69,7 @@ class DetailView(generic.DetailView):
         return context
 
 
-class UserFormView(generic.View):
+class RegisterView(generic.View):
     form_class = UserForm
     template_name = 'trainer/registration_form.html'
 
@@ -86,11 +88,17 @@ class UserFormView(generic.View):
             user.set_password(password)
             user.save()
 
-            #Add entry to profile model so that it is visible in listing
-            profile = Profile(user=user)
+            # Add entry to profile model so that it is visible in listing
+            authentication_token = get_random_string(length=50)
+            profile = Profile(user=user, activation_string=authentication_token)
             profile.save()
 
-            return redirect('trainer:newacct')
+            # Set newly created account by default deactivated
+            User.objects.filter(id=user.id).update(
+                is_active=False
+            )
+
+            return redirect('trainer:verifyemail')
 
         return render(request, self.template_name, {'form':form})
 
@@ -202,6 +210,29 @@ class TimelineDelete(generic.DeleteView):
 
 def newacct(request):
     return render(request, "trainer/acct_created.html")
+
+
+def verifyemail(request):
+    return render(request, "trainer/verify_email.html")
+
+
+def activation(request):
+    try:
+        profile = Profile.objects.filter(
+            activation_string=request.GET['activation_token'])[0]
+    except IndexError:
+        return redirect('trainer:listing')
+
+    user = profile.user
+
+    if user:
+        user.is_active = True
+        profile.activation_string = None
+        user.save()
+        profile.save()
+        return render(request, "trainer/acct_created.html")
+
+    return redirect('trainer:listing')
 
 
 @login_required()
