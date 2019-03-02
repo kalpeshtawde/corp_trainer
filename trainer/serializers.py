@@ -6,7 +6,7 @@ from .models import *
 class MessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Message
-        fields = ['profile', 'id', 'message', 'phone', 'email', 'read', 'dttime']
+        fields = ['user', 'id', 'message', 'phone', 'email', 'read', 'dttime']
 
 
 class AvailabilitySerializer(serializers.ModelSerializer):

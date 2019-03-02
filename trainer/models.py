@@ -75,7 +75,7 @@ class Experience(models.Model):
 
 class Message(models.Model):
     # Message model which contains messages sent to trainer by requester
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     message = models.CharField(max_length=1000)
     phone = models.CharField(max_length=20)
     email = models.EmailField()
