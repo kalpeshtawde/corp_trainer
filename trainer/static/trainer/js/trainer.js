@@ -40,9 +40,11 @@ app.controller('messageController', function($scope, $http, $filter) {
         for (var i= 0; i < response.data.length; i++) {
             var message = {};
             message.msgId = 'collapse' + i;
+            message.rawMsgId = response.data[i].id;
             message.msgText = response.data[i].message;
             message.msgPhone = response.data[i].phone;
             message.msgEmail = response.data[i].email;
+            message.msgRead = response.data[i].read;
             message.msgDateTime = response.data[i].dttime;
             $scope.messageList.push(message);
         }
@@ -75,12 +77,11 @@ app.controller('messageController', function($scope, $http, $filter) {
 
         if (! $scope.blankMessage && !$scope.blankPhone && !$scope.blankEmail) {
             var data = {
-            "profile": 1,
-            "message": $scope.message_text,
-            "phone": $scope.message_phone,
-            "email": $scope.message_email,
-            "read": false,
-            "dttime": "2019-01-10T15:03:50.683434Z"
+                "message": $scope.message_text,
+                "phone": $scope.message_phone,
+                "email": $scope.message_email,
+                "read": false,
+                "dttime": "2019-01-10T15:03:50.683434Z"
             };
             $http.put('/trainer/api/message/', data);
 
@@ -92,18 +93,33 @@ app.controller('messageController', function($scope, $http, $filter) {
 
     }
 
+    $scope.readMessage = function(message) {
+        if (! message.msgRead) { // Do not change the flag is message is already read
+            var data = {
+                "id": message.rawMsgId,
+                "message": message.msgText,
+                "phone": message.msgPhone,
+                "email": message.msgEmail,
+                "read": true,
+                "dttime": message.msgDateTime
+            };
+            console.log(data)
+            $http.patch('/trainer/api/message/', data);
+        }
+    }
+
     $scope.sortMessage = function(order) {
         if (order == 1) {
             $scope.messageList = $filter('orderBy')($scope.messageList, '-msgDateTime')
         } else {
             $scope.messageList = $filter('orderBy')($scope.messageList, 'msgDateTime')
         }
-    };
+    }
 
     $scope.messageAdd = function() {
         $scope.messageList.push({msgText: $scope.inputMessage, done: false});
         $scope.inputMessage = '';
-    };
+    }
 
     $scope.remove = function() {
         var oldList = $scope.messageList;
@@ -113,6 +129,6 @@ app.controller('messageController', function($scope, $http, $filter) {
             $scope.messageList.push(x);
             };
         })
-    };
+    }
 
 });

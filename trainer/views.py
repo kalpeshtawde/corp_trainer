@@ -277,10 +277,18 @@ class MessageAPIView(APIView):
         return Response(serializer.data)
 
     def put(self, request):
-        serializer = MessageSerializer(data=request.data)
-
+        instance = Message.objects.get(user=request.user)
+        serializer = MessageSerializer(instance, data=request.data)
         if serializer.is_valid():
-            serializer.save(user=self.request.user)
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def patch(self, request):
+        instance = Message.objects.get(user=request.user)
+        serializer = MessageSerializer(instance, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
