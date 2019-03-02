@@ -4,6 +4,7 @@ var app = angular.module('trainer', [], function($interpolateProvider) {
     $interpolateProvider.endSymbol(']]');
 });
 
+// Profile modifications controlled by modifyController
 app.controller('modifyController', function($scope, $http, $filter) {
 
     $scope.disableAvailability = true;
@@ -29,6 +30,7 @@ app.controller('modifyController', function($scope, $http, $filter) {
     }
 })
 
+// All the messaging controlled by messageController
 app.controller('messageController', function($scope, $http, $filter) {
     $scope.showMessageModal = true;
 

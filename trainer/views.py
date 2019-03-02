@@ -272,7 +272,7 @@ class MessageAPIView(APIView):
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
 
     def get(self, request):
-        message = Message.objects.all()
+        message = Message.objects.filter(user=self.request.user)
         serializer = MessageSerializer(message, many=True)
         return Response(serializer.data)
 
