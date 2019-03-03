@@ -11,7 +11,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+
 from math import ceil
+from operator import and_, or_
+from functools import reduce
 
 
 from .forms import *
@@ -36,9 +39,9 @@ class ListingView(generic.ListView):
         # queryset = queryset.exclude(User__username='admin')
 
         if 'search' in self.request.GET:
-            queryset = queryset.filter(
-                Q(user__skill__title__contains=self.request.GET['search'])
-            )
+            search = re.sub('[^a-zA-Z0-9 ]', ' ', self.request.GET['search'])
+            search = list(filter(None, search.split(' ')))
+            queryset = queryset.filter(reduce(or_, [Q(user__skill__title__contains=q) for q in search]))
 
         return queryset
 
