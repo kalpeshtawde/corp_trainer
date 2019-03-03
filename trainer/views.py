@@ -41,7 +41,10 @@ class ListingView(generic.ListView):
         if 'search' in self.request.GET:
             search = re.sub('[^a-zA-Z0-9 ]', ' ', self.request.GET['search'])
             search = list(filter(None, search.split(' ')))
-            queryset = queryset.filter(reduce(or_, [Q(user__skill__title__contains=q) for q in search]))
+            queryset = queryset.filter(reduce(or_, [
+                (Q(user__skill__title__contains=q) |
+                Q(user__availability__locations__contains=q)) for q in search
+                ])).distinct()
 
         return queryset
 
