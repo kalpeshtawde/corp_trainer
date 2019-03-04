@@ -20,6 +20,7 @@ from functools import reduce
 from .forms import *
 from .models import *
 from .serializers import *
+from .controller import Controller
 
 
 class IndexView(generic.TemplateView):
@@ -94,8 +95,12 @@ class RegisterView(generic.View):
             user.set_password(password)
             user.save()
 
-            # Add entry to profile model so that it is visible in listing
             authentication_token = get_random_string(length=50)
+
+            # Send activation email to new registered user
+            #Controller.send_activation_mail(authentication_token)
+
+            # Add entry to profile model so that it is visible in listing
             profile = Profile(user=user, activation_string=authentication_token)
             profile.save()
 
@@ -275,7 +280,10 @@ class CsrfExemptSessionAuthentication(SessionAuthentication):
 
 
 class MessageAPIView(APIView):
-    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+    authentication_classes = (
+        CsrfExemptSessionAuthentication,
+        BasicAuthentication
+    )
 
     def get(self, request):
         message = Message.objects.filter(user=self.request.user)
@@ -300,7 +308,10 @@ class MessageAPIView(APIView):
 
 
 class AvailabilityAPIView(APIView):
-    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+    authentication_classes = (
+        CsrfExemptSessionAuthentication,
+        BasicAuthentication
+    )
 
     def get(self, request):
         availability = Availability.objects.filter(user=request.user)
@@ -312,5 +323,25 @@ class AvailabilityAPIView(APIView):
         serializer = AvailabilitySerializer(instance, data=request.data)
         if serializer.is_valid():
             serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ReviewsAPIView(APIView):
+    authentication_classes = (
+        CsrfExemptSessionAuthentication,
+        BasicAuthentication
+    )
+
+    def get(self, request):
+        reviews = Reviews.objects.filter(user=request.user)
+        serializer = ReviewsSerializer(reviews, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        #instance = Reviews.objects.get(user=request.user)
+        serializer = ReviewsSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=self.request.user)
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
